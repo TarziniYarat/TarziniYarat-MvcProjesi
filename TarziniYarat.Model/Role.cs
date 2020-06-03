@@ -10,6 +10,5 @@ namespace TarziniYarat.Model
     {
         public int RoleID { get; set; }
         public string RoleName { get; set; }
-        public int MyProperty { get; set; }
     }
 }
