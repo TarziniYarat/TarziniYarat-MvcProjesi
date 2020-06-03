@@ -14,5 +14,7 @@ namespace TarziniYarat.Model
         public string UserName { get; set; }
         public string Password { get; set; }
         public int RoleID { get; set; }
+        public string IsActive { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }
