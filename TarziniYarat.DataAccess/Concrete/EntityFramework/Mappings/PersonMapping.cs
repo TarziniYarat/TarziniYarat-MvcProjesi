@@ -21,11 +21,11 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                .IsRequired();
 
             Property(a => a.TCKN)
-               .HasMaxLength(25)
+               .HasMaxLength(11)
                .IsRequired();
 
             Property(a => a.Username)
-               .HasMaxLength(11)
+               .HasMaxLength(25)
                .IsRequired();
 
             Property(a => a.Password)
