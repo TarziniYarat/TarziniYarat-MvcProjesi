@@ -39,7 +39,6 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework
 
 
 
-
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
         }
