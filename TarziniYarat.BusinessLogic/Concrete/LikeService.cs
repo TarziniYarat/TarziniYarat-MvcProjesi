@@ -23,21 +23,21 @@ namespace TarziniYarat.BusinessLogic.Concrete
             return _likeDAL.Add(entity) > 0;
         }
 
-        //public bool Delete(int entityID)
-        //{
-        //    Like like = _likeDAL.Get(a => a.LikeID == entityID);
-        //    return like.Delete(like) > 0;
-        //}
+        public bool Delete(int entityID)
+        {
+            Like like = _likeDAL.Get(a => a.LikeID == entityID);
+            return _likeDAL.Delete(like) > 0;
+        }
 
         public List<Like> GetAll()
         {
             return _likeDAL.GetAll().ToList();
         }
 
-        //public Like GetByID(int entityID)
-        //{
-        //    return _likeDAL.Get(a => a.LikeID == entityID);
-        //}
+        public Like GetByID(int entityID)
+        {
+            return _likeDAL.Get(a => a.LikeID == entityID);
+        }
 
         public bool Update(Like entity)
         {
