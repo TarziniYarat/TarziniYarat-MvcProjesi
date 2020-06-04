@@ -4,35 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.DataAccess.Abstract;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.BusinessLogic.Concrete
 {
     public class PersonService : IPersonService
     {
+        IPersonDAL _personDAL;
+
+        public PersonService(IPersonDAL personDAL)
+        {
+            _personDAL = personDAL;
+        }
+
         public bool Add(Person entity)
         {
-            throw new NotImplementedException();
+            return _personDAL.Add(entity) > 0;
         }
 
         public bool Delete(int entityID)
         {
-            throw new NotImplementedException();
+            Person person = _personDAL.Get(a => a.PersonID == entityID);
+            return _personDAL.Delete(person) > 0;
         }
 
         public List<Person> GetAll()
         {
-            throw new NotImplementedException();
+            return _personDAL.GetAll().ToList();
         }
 
         public Person GetByID(int entityID)
         {
-            throw new NotImplementedException();
+            return _personDAL.Get(a => a.PersonID == entityID);
         }
 
         public bool Update(Person entity)
         {
-            throw new NotImplementedException();
+            return _personDAL.Update(entity) > 0;
         }
     }
 }

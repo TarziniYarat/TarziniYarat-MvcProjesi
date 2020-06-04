@@ -4,35 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.DataAccess.Abstract;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.BusinessLogic.Concrete
 {
     public class CommentService : ICommentService
     {
+        ICommentDAL _commentDAL;
+
+        public CommentService(ICommentDAL commentDAL)
+        {
+            _commentDAL = commentDAL;
+        }
+
         public bool Add(Comment entity)
         {
-            throw new NotImplementedException();
+            return _commentDAL.Add(entity) > 0;
         }
 
         public bool Delete(int entityID)
         {
-            throw new NotImplementedException();
+            Comment comment = _commentDAL.Get(a => a.CommentID == entityID);
+            return _commentDAL.Delete(comment) > 0;
         }
 
         public List<Comment> GetAll()
         {
-            throw new NotImplementedException();
+            return _commentDAL.GetAll().ToList();
         }
 
         public Comment GetByID(int entityID)
         {
-            throw new NotImplementedException();
+            return _commentDAL.Get(a => a.CommentID == entityID);
         }
 
         public bool Update(Comment entity)
         {
-            throw new NotImplementedException();
+            return _commentDAL.Update(entity) > 0;
         }
     }
 }

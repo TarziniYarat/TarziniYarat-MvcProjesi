@@ -4,35 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.DataAccess.Abstract;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.BusinessLogic.Concrete
 {
     public class ProductService : IProductService
     {
+        IProductDAL _productDAL;
+
+        public ProductService(IProductDAL productDAL)
+        {
+            _productDAL = productDAL;
+        }
+
         public bool Add(Product entity)
         {
-            throw new NotImplementedException();
+            return _productDAL.Add(entity) > 0;
         }
 
         public bool Delete(int entityID)
         {
-            throw new NotImplementedException();
+            Product product = _productDAL.Get(a => a.ProductID == entityID);
+            return _productDAL.Delete(product) > 0;
         }
 
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return _productDAL.GetAll().ToList();
         }
 
         public Product GetByID(int entityID)
         {
-            throw new NotImplementedException();
+            return _productDAL.Get(a => a.ProductID == entityID);
         }
 
         public bool Update(Product entity)
         {
-            throw new NotImplementedException();
+            return _productDAL.Update(entity) > 0;
         }
     }
 }

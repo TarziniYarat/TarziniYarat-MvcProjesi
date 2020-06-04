@@ -4,35 +4,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.DataAccess.Abstract;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.BusinessLogic.Concrete
 {
     public class LikeService : ILikeService
     {
-        public bool Add(Like entity)
+        ILikeDAL _likeDAL;
+
+        public LikeService(ILikeDAL likeDAL)
         {
-            throw new NotImplementedException();
+            _likeDAL = likeDAL;
         }
 
-        public bool Delete(int entityID)
+        public bool Add(Like entity)
         {
-            throw new NotImplementedException();
+            return _likeDAL.Add(entity) > 0;
         }
+
+        //public bool Delete(int entityID)
+        //{
+        //    Like like = _likeDAL.Get(a => a.LikeID == entityID);
+        //    return like.Delete(like) > 0;
+        //}
 
         public List<Like> GetAll()
         {
-            throw new NotImplementedException();
+            return _likeDAL.GetAll().ToList();
         }
 
-        public Like GetByID(int entityID)
-        {
-            throw new NotImplementedException();
-        }
+        //public Like GetByID(int entityID)
+        //{
+        //    return _likeDAL.Get(a => a.LikeID == entityID);
+        //}
 
         public bool Update(Like entity)
         {
-            throw new NotImplementedException();
+            return _likeDAL.Update(entity) > 0;
         }
     }
 }

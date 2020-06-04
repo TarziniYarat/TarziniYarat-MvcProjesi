@@ -8,7 +8,7 @@ using TarziniYarat.Model;
 
 namespace TarziniYarat.DataAccess.Abstract
 {
-    interface ICategoryDAL :IRepository<Category>
+    public interface ICategoryDAL :IRepository<Category>
     {
     }
 }
