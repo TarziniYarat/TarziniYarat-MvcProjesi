@@ -21,6 +21,7 @@ namespace TarziniYarat.Model
         public string Surname { get; set; }
         public string TCKN { get; set; }
         public string BirthDate { get; set; }
+        public string Username { get; set; }
         public string Password { get; set; }
 
         //Navigation prop
