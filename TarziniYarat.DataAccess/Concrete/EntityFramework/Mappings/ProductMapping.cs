@@ -35,9 +35,7 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                 .HasForeignKey(a => a.BrandID);
 
 
-            HasMany(a => a.Comments)
-                .WithRequired(a => a.Product)
-                .HasForeignKey(a => a.ProductID);
+            
         }
     }
 }

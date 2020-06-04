@@ -11,6 +11,7 @@ namespace TarziniYarat.Model
     {
         //TODO
         //İlişkiler nasıl olmalıdır.
+        public int LikeID { get; set; }
         public int PersonID { get; set; }
         public int CombineID { get; set; }
         public DateTime LikeDate { get; set; }

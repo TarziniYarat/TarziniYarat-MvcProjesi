@@ -24,10 +24,10 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                 .WithMany(a => a.Comments)
                 .HasForeignKey(a => a.CombineID);
 
-            HasOptional(a => a.Product)
-                .WithMany(a => a.Comments)
-                .HasForeignKey(a => a.ProductID);
 
+            HasOptional(a => a.Product)
+              .WithMany(a => a.Comments)
+              .HasForeignKey(a => a.ProductID);
 
         }
     }

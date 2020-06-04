@@ -12,8 +12,8 @@ namespace TarziniYarat.Model
         public int CommentID { get; set; }
         public string Content { get; set; }
         public DateTime CommentDate { get; set; }
-        public int ProductID { get; set; }
-        public int CombineID { get; set; }
+        public int? ProductID { get; set; }
+        public int? CombineID { get; set; }
         //TODO 
         //burada person boş geçebileceği için ve birebir bağlantı olmadığı için kişi ile navda yazılmalı mı
         public int PersonID { get; set; }
