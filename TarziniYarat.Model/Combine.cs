@@ -9,9 +9,11 @@ namespace TarziniYarat.Model
 {
     public class Combine:BaseEntity
     {
+        //TODO
+        //Çoko çok ilişki nasıl olmalıdır
         public Combine()
         {
-            Members = new HashSet<Person>();
+            Likes = new HashSet<Like>();
             Comments = new HashSet<Comment>();
         }
         public int CombineID { get; set; }
@@ -20,7 +22,7 @@ namespace TarziniYarat.Model
         public int NumberOfComments { get; set; }
 
         //Navigation prop
-        public ICollection<Person> Members { get; set; }
+        public ICollection<Like> Likes { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }
 }

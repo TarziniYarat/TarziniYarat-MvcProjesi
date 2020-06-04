@@ -11,11 +11,11 @@ namespace TarziniYarat.Model
     {
         public Product()
         {
-            Combines = new HashSet<Combine>();
+            OrderDetails = new HashSet<OrderDetails>();
+            Comments = new HashSet<Comment>();
         }
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
-        public int CombineID { get; set; }
         public int BrandID { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
@@ -25,8 +25,9 @@ namespace TarziniYarat.Model
         public string Color { get; set; }
 
         //Navigation prop
-        public Shipper Shipper { get; set; }
-        public ICollection<Combine> Combines { get; set; }
+        public Category Category { get; set; }
         public Brand Brand { get; set; }
+        public ICollection<OrderDetails> OrderDetails { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
