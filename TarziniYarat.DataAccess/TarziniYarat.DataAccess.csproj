@@ -63,6 +63,7 @@
     <Compile Include="Abstract\IProductDAL.cs" />
     <Compile Include="Abstract\IRoleDAL.cs" />
     <Compile Include="Abstract\IShipperDAL.cs" />
+    <Compile Include="Concrete\EntityFramework\Mappings\RoleMapping.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\BrandRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\CategoryRepository.cs" />
     <Compile Include="Concrete\EntityFramework\Repository\CombineRepository.cs" />
@@ -78,9 +79,7 @@
     <Compile Include="Concrete\EntityFramework\TarziniYaratDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Concrete\EntityFramework\Mappings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\TarziniYarat.Core\TarziniYarat.Core.csproj">
       <Project>{4828413f-82ab-4709-aad2-a55d34de9c3d}</Project>
