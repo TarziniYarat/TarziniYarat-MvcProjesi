@@ -12,6 +12,7 @@ namespace TarziniYarat.Model
         public Combine()
         {
             Members = new HashSet<Member>();
+            Comments = new HashSet<Comment>();
         }
         public int CombineID { get; set; }
         public string PhotoPath { get; set; }
@@ -20,5 +21,6 @@ namespace TarziniYarat.Model
 
         //Navigation prop
         public ICollection<Member> Members { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
