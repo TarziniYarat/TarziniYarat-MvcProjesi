@@ -8,14 +8,18 @@ using TarziniYarat.Model;
 
 namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 {
-    class RoleMapping: EntityTypeConfiguration<Role>
+    class CombineMapping :EntityTypeConfiguration<Combine>
     {
-        public RoleMapping()
+        public CombineMapping()
         {
-            HasKey(a => a.RoleID);
-            Property(a => a.RoleName)
-                .HasMaxLength(50)
-                .IsRequired();            
+            Property(a => a.NumberOfLikes)
+                .IsRequired();
+
+            Property(a => a.NumberOfComments)
+                .IsRequired();
+
+
+
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.DataAccess.Concrete.EntityFramework
@@ -37,7 +38,18 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
 
-
+            modelBuilder.Configurations.Add(new RoleMapping());
+            modelBuilder.Configurations.Add(new PersonMapping());
+            modelBuilder.Configurations.Add(new PersonDetailsMapping());
+            modelBuilder.Configurations.Add(new CategoryMapping());
+            modelBuilder.Configurations.Add(new ProductMapping());
+            modelBuilder.Configurations.Add(new OrdersMapping());
+            modelBuilder.Configurations.Add(new OrderDetailsMapping());
+            modelBuilder.Configurations.Add(new BrandMapping());
+            modelBuilder.Configurations.Add(new CommentMapping());
+            modelBuilder.Configurations.Add(new LikeMapping());
+            modelBuilder.Configurations.Add(new CombineMapping());
+            modelBuilder.Configurations.Add(new ShipperMapping());
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

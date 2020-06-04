@@ -8,14 +8,19 @@ using TarziniYarat.Model;
 
 namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 {
-    class RoleMapping: EntityTypeConfiguration<Role>
+    class ShipperMapping : EntityTypeConfiguration<Shipper>
     {
-        public RoleMapping()
+        public ShipperMapping()
         {
-            HasKey(a => a.RoleID);
-            Property(a => a.RoleName)
+            Property(a => a.CompanyName)
                 .HasMaxLength(50)
-                .IsRequired();            
+                .IsRequired();
+
+            Property(a => a.Phone)
+               .HasMaxLength(11)
+               .IsRequired();
+
+            
         }
     }
 }

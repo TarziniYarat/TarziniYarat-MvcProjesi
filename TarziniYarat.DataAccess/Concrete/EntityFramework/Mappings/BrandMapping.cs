@@ -8,14 +8,15 @@ using TarziniYarat.Model;
 
 namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
 {
-    class RoleMapping: EntityTypeConfiguration<Role>
+    class BrandMapping :EntityTypeConfiguration<Brand>
     {
-        public RoleMapping()
+        public BrandMapping()
         {
-            HasKey(a => a.RoleID);
-            Property(a => a.RoleName)
+            Property(a => a.CompanyName)
                 .HasMaxLength(50)
-                .IsRequired();            
+                .IsRequired();
+
+
         }
     }
 }

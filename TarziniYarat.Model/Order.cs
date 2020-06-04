@@ -16,7 +16,7 @@ namespace TarziniYarat.Model
         public int OrderID { get; set; }
         public int PersonID { get; set; }
         public int ShipperID { get; set; }
-        public decimal TotalAmount { get; set; }
+        public decimal TotalPrice { get; set; }
 
         //Navigation prop
         public Shipper Shipper { get; set; }
