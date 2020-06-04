@@ -53,7 +53,7 @@
   <ItemGroup>
     <Compile Include="DataAccess\EntityFramework\EFRepositoryBase.cs" />
     <Compile Include="DataAccess\EntityFramework\SingletonContext.cs" />
-    <Compile Include="IRepository.cs" />
+    <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="Model\BaseEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
