@@ -41,13 +41,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IBrandDAL.cs" />
+    <Compile Include="Abstract\ICategoryDAL.cs" />
+    <Compile Include="Abstract\ICombineDAL.cs" />
+    <Compile Include="Abstract\ICommentDAL.cs" />
+    <Compile Include="Abstract\ILikeDAL.cs" />
+    <Compile Include="Abstract\IOrderDAL.cs" />
+    <Compile Include="Abstract\IOrderDetailsDAL.cs" />
+    <Compile Include="Abstract\IPersonDAL.cs" />
+    <Compile Include="Abstract\IPersonDetailsDAL.cs" />
+    <Compile Include="Abstract\IProductDAL.cs" />
+    <Compile Include="Abstract\IRoleDAL.cs" />
+    <Compile Include="Abstract\IShipperDAL.cs" />
     <Compile Include="Concrete\EntityFramework\TarziniYaratDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Abstract\" />
     <Folder Include="Concrete\EntityFramework\Mappings\" />
     <Folder Include="Concrete\EntityFramework\Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TarziniYarat.Core\TarziniYarat.Core.csproj">
+      <Project>{4828413f-82ab-4709-aad2-a55d34de9c3d}</Project>
+      <Name>TarziniYarat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TarziniYarat.Model\TarziniYarat.Model.csproj">
+      <Project>{c689f3f1-5d65-4b47-9dee-abeff0630958}</Project>
+      <Name>TarziniYarat.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
