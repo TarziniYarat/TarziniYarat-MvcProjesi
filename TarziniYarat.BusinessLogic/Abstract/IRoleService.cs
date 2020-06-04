@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TarziniYarat.Core;
 using TarziniYarat.Model;
 
-namespace TarziniYarat.DataAccess.Abstract
+namespace TarziniYarat.BusinessLogic.Abstract
 {
-    public interface ILikeDAL:IRepository<Like>
+    public interface IRoleService:IBaseService<Role>
     {
     }
 }
