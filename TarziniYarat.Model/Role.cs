@@ -11,12 +11,12 @@ namespace TarziniYarat.Model
     {
         public Role()
         {
-            Members = new HashSet<Member>();
+            Members = new HashSet<Person>();
         }
         public int RoleID { get; set; }
         public string RoleName { get; set; }
 
         //Navigation prop
-        public ICollection<Member> Members { get; set; }
+        public ICollection<Person> Members { get; set; }
     }
 }

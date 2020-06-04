@@ -7,7 +7,7 @@ using TarziniYarat.Core.Model;
 
 namespace TarziniYarat.Model
 {
-    public class MemberDetails:BaseEntity
+    public class PersonDetails:BaseEntity
     {
     }
 }

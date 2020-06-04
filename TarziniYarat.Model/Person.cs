@@ -7,7 +7,7 @@ using TarziniYarat.Core.Model;
 
 namespace TarziniYarat.Model
 {
-    public class Member:BaseEntity
+    public class Person:BaseEntity
     {
         public int MemberID { get; set; }
         public int RoleID { get; set; }

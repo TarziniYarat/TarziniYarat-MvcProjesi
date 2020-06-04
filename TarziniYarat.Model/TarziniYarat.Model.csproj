@@ -46,8 +46,8 @@
     <Compile Include="Category.cs" />
     <Compile Include="Combine.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="Member.cs" />
-    <Compile Include="MemberDetails.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="PersonDetails.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderDetails.cs" />
     <Compile Include="Product.cs" />

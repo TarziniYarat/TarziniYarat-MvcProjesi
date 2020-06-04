@@ -11,7 +11,7 @@ namespace TarziniYarat.Model
     {
         public Combine()
         {
-            Members = new HashSet<Member>();
+            Members = new HashSet<Person>();
             Comments = new HashSet<Comment>();
         }
         public int CombineID { get; set; }
@@ -20,7 +20,7 @@ namespace TarziniYarat.Model
         public int NumberOfComments { get; set; }
 
         //Navigation prop
-        public ICollection<Member> Members { get; set; }
+        public ICollection<Person> Members { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }
 }
