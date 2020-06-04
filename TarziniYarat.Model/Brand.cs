@@ -7,17 +7,16 @@ using TarziniYarat.Core.Model;
 
 namespace TarziniYarat.Model
 {
-    public class Shipper:BaseEntity
+    public class Brand:BaseEntity
     {
-        public Shipper()
+        public Brand()
         {
-            Orders = new HashSet<Order>();
+            Products = new HashSet<Product>();
         }
-        public int ShipperID { get; set; }
+        public int BrandID { get; set; }
         public string CompanyName { get; set; }
-        public string Phone { get; set; }
 
         //Navigation prop
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

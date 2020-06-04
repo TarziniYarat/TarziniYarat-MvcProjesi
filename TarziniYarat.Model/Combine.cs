@@ -7,14 +7,16 @@ using TarziniYarat.Core.Model;
 
 namespace TarziniYarat.Model
 {
-    public class Role:BaseEntity
+    public class Combine:BaseEntity
     {
-        public Role()
+        public Combine()
         {
             Members = new HashSet<Member>();
         }
-        public int RoleID { get; set; }
-        public string RoleName { get; set; }
+        public int CombineID { get; set; }
+        public string PhotoPath { get; set; }
+        public int NumberOfLikes { get; set; }
+        public int NumberOfComments { get; set; }
 
         //Navigation prop
         public ICollection<Member> Members { get; set; }

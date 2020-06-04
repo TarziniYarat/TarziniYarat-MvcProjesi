@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCE94522-D16B-4758-8D1C-1EA1C5ECF566}</ProjectGuid>
+    <ProjectGuid>{C689F3F1-5D65-4B47-9DEE-ABEFF0630958}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TarziniYarat.Model</RootNamespace>
@@ -41,12 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PersonInformation.cs" />
+    <Compile Include="Brand.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="Combine.cs" />
+    <Compile Include="Member.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
     <Compile Include="Shipper.cs" />
-    <Compile Include="Yorum.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TarziniYarat.Core\TarziniYarat.Core.csproj">
+      <Project>{4828413f-82ab-4709-aad2-a55d34de9c3d}</Project>
+      <Name>TarziniYarat.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
