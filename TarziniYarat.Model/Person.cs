@@ -9,8 +9,14 @@ namespace TarziniYarat.Model
 {
     public class Person:BaseEntity
     {
-        public int MemberID { get; set; }
+        public Person()
+        {
+            Likes = new HashSet<Like>();
+            Orders = new HashSet<Order>();
+        }
+        public int PersonID { get; set; }
         public int RoleID { get; set; }
+        public int PersonDetailsID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string TCKN { get; set; }
@@ -19,5 +25,8 @@ namespace TarziniYarat.Model
 
         //Navigation prop
         public Role Role { get; set; }
+        public PersonDetails PersonDetails { get; set; }
+        public ICollection<Like> Likes { get; set; }
+        public ICollection<Order> Orders { get; set; }
     }
 }

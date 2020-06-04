@@ -7,7 +7,15 @@ using TarziniYarat.Core.Model;
 
 namespace TarziniYarat.Model
 {
-   public class OrderDetails:BaseEntity
+    public class OrderDetails:BaseEntity
     {
+        public int OrderID { get; set; }
+        public int ProductID { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int Quantity { get; set; }
+
+        //Navigation prop
+        public Order Order { get; set; }
+        public Product Product { get; set; }
     }
 }
