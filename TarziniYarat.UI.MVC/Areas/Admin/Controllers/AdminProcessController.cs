@@ -14,6 +14,16 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View();
         }
 
+        private void GetBodyFromEnum()
+        {
+            string[] genderEnums = Enum.GetNames(typeof());
+            List<SelectListItem> genders = new List<SelectListItem>();
+            foreach (string item in genderEnums)
+            {
+                genders.Add(new SelectListItem { Text = item, Value = item });
+            }
+            ViewBag.Genders = genders;
+        }
 
         public ActionResult AddProduct()
         {
