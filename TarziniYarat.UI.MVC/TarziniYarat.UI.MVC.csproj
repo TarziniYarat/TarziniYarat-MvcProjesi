@@ -1715,6 +1715,17 @@
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\bootstrap.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\jquery-ui.css" />
+    <Content Include="Assets\css\linericon\style.css" />
+    <Content Include="Assets\css\nice-select.css" />
+    <Content Include="Assets\css\owl.carousel.min.css" />
+    <Content Include="Assets\css\responsive.css" />
+    <Content Include="Assets\css\simpleLightbox.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\css\vendor\style.css" />
     <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="fashiop\blog.html" />
     <Content Include="fashiop\cart.html" />
@@ -2187,7 +2198,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Assets\css\" />
     <Folder Include="Assets\img\" />
     <Folder Include="Assets\js\" />
     <Folder Include="Assets\scss\" />
