@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class MembersOrderController : Controller
     {
-        // GET: Admin/Admin
-        public ActionResult Index()
+        // GET: Admin/MembersOrder
+        public ActionResult StokTraking()
         {
             return View();
         }
 
-        public ActionResult AddMember()
-        {
-            return View();
-        }
-        public ActionResult BrowseComment()
+        public ActionResult ShipperProduct()
         {
             return View();
         }
