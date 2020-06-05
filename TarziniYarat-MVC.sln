@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarziniYarat.DataAccess", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarziniYarat.BusinessLogic", "TarziniYarat.BusinessLogic\TarziniYarat.BusinessLogic.csproj", "{2111B1F7-742B-4EE3-98B5-1DE01CCA5792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TarziniYarat.UI.MVC", "TarziniYarat.UI.MVC\TarziniYarat.UI.MVC.csproj", "{34084207-DDDA-4103-90F2-52DC1D772E58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2111B1F7-742B-4EE3-98B5-1DE01CCA5792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2111B1F7-742B-4EE3-98B5-1DE01CCA5792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2111B1F7-742B-4EE3-98B5-1DE01CCA5792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34084207-DDDA-4103-90F2-52DC1D772E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34084207-DDDA-4103-90F2-52DC1D772E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34084207-DDDA-4103-90F2-52DC1D772E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34084207-DDDA-4103-90F2-52DC1D772E58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
