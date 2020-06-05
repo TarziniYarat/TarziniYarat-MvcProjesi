@@ -2002,6 +2002,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminProcessController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MembersOrderController.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2229,6 +2231,16 @@
     <Content Include="Assets\scss\_variables.scss" />
     <Content Include="Assets\scss\breadcrumb.scss" />
     <Content Include="Assets\scss\style.scss" />
+    <Content Include="Areas\Admin\Views\AdminProcess\ProductList.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\CategoryList.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\AddProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\BrandList.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\PersonList.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\AddMember.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
+    <Content Include="Areas\Admin\Views\MembersOrder\StokTraking.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
