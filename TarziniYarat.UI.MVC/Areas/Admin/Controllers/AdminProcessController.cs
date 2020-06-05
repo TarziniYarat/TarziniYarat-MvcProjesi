@@ -11,9 +11,13 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
     public class AdminProcessController : Controller
     {
         IProductService _productService;
-        public AdminProcessController(IProductService productService)
+        ICategoryService _categoryService;
+        IBrandService _brandService;
+        public AdminProcessController(IProductService productService, ICategoryService categoryService, IBrandService brandService)
         {
             _productService = productService;
+            _categoryService = categoryService;
+            _brandService = brandService;
         }
         public ActionResult ProductList()
         {
@@ -44,10 +48,32 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             ViewBag.Color = color;
         }
+        private void GetAllCategories()
+        {
+            List<SelectListItem> categories = new List<SelectListItem>();
+            foreach (Category item in _categoryService.GetAll())
+            {
+                categories.Add(new SelectListItem { Text = item.CategoryName, Value = item.CategoryID.ToString() });
+            }
+            ViewBag.Categories = categories;
+        }
+
+        //while creating a new product,we need to add product's brand which was created before.
+        private void GetAllBrands()
+        {
+            List<SelectListItem> brands = new List<SelectListItem>();
+            foreach (Brand item in _brandService.GetAll())
+            {
+                brands.Add(new SelectListItem { Text = item.CompanyName, Value = item.BrandID.ToString() });
+            }
+            ViewBag.Brands = brands;
+        }
         public ActionResult AddProduct()
         {
             GetBodyFromEnum();
             GetColorFromEnum();
+            GetAllBrands();
+            GetAllCategories();
             return View();
         }
 
@@ -55,6 +81,8 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             GetBodyFromEnum();
             GetColorFromEnum();
+            GetAllBrands();
+            GetAllCategories();
 
             if (p.Description!=null && p.ProductTitle!=null) //buraya bak
             {
