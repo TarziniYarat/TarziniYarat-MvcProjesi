@@ -2216,6 +2216,19 @@
     <Content Include="Assets\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\fonts\FontAwesome.otf" />
+    <Content Include="Assets\scss\_blog.scss" />
+    <Content Include="Assets\scss\_button.scss" />
+    <Content Include="Assets\scss\_clients.scss" />
+    <Content Include="Assets\scss\_contact.scss" />
+    <Content Include="Assets\scss\_elements.scss" />
+    <Content Include="Assets\scss\_footer.scss" />
+    <Content Include="Assets\scss\_header.scss" />
+    <Content Include="Assets\scss\_predefine.scss" />
+    <Content Include="Assets\scss\_product.scss" />
+    <Content Include="Assets\scss\_timer.scss" />
+    <Content Include="Assets\scss\_variables.scss" />
+    <Content Include="Assets\scss\breadcrumb.scss" />
+    <Content Include="Assets\scss\style.scss" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
@@ -2238,7 +2251,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Assets\scss\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
