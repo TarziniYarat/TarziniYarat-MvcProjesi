@@ -1734,6 +1734,12 @@
     <Content Include="Assets\img\c-logo-3.png" />
     <Content Include="Assets\img\c-logo-4.png" />
     <Content Include="Assets\img\c-logo-5.png" />
+    <Content Include="Assets\img\c1.jpg" />
+    <Content Include="Assets\img\c2.jpg" />
+    <Content Include="Assets\img\c3.jpg" />
+    <Content Include="Assets\img\c4.jpg" />
+    <Content Include="Assets\img\c5.jpg" />
+    <Content Include="Assets\img\c6.jpg" />
     <Content Include="Assets\img\cat-post-2.jpg" />
     <Content Include="Assets\img\cat-post-3.jpg" />
     <Content Include="Assets\img\checkout-bg.jpg" />
@@ -1759,6 +1765,10 @@
     <Content Include="Assets\img\m-blog-3.jpg" />
     <Content Include="Assets\img\m-blog-4.jpg" />
     <Content Include="Assets\img\m-blog-5.jpg" />
+    <Content Include="Assets\img\next.jpg" />
+    <Content Include="Assets\img\post-img1.jpg" />
+    <Content Include="Assets\img\post-img2.jpg" />
+    <Content Include="Assets\img\prev.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\imagesloaded.pkgd.min.js" />
     <Content Include="Assets\js\isotope-min.js" />
