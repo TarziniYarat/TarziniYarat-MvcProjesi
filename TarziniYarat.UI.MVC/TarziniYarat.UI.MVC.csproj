@@ -1715,6 +1715,7 @@
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.min.js" />
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.slim.js" />
     <Content Include="Areas\Admin\Content\yedek\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="fashiop\blog.html" />
     <Content Include="fashiop\cart.html" />
     <Content Include="fashiop\category.html" />
@@ -1950,6 +1951,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2158,7 +2160,13 @@
     <Content Include="fashiop\vendors\linericon\fonts\Linearicons-Free.woff2" />
     <Content Include="fashiop\vendors\nice-select\.DS_Store" />
     <Content Include="fashiop\vendors\owl-carousel\.DS_Store" />
+    <Content Include="Assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Assets\fonts\FontAwesome.otf" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2169,8 +2177,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Assets\css\" />
+    <Folder Include="Assets\img\" />
+    <Folder Include="Assets\js\" />
+    <Folder Include="Assets\scss\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Sites\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
