@@ -3,30 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.Model;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
     public class AdminProcessController : Controller
     {
-        // GET: Admin/AdminProcess
+        IProductService _productService;
+        public AdminProcessController(IProductService productService)
+        {
+            _productService = productService;
+        }
         public ActionResult ProductList()
         {
             return View();
         }
 
+
+        // TODO: Body enumı alınıp ViewBag e aktarıldı.
         private void GetBodyFromEnum()
         {
-            string[] genderEnums = Enum.GetNames(typeof());
-            List<SelectListItem> genders = new List<SelectListItem>();
-            foreach (string item in genderEnums)
+            string[] bodyEnums = Enum.GetNames(typeof(Size));
+            List<SelectListItem> body = new List<SelectListItem>();
+            foreach (string item in bodyEnums)
             {
-                genders.Add(new SelectListItem { Text = item, Value = item });
+                body.Add(new SelectListItem { Text = item, Value = item });
             }
-            ViewBag.Genders = genders;
+            ViewBag.Bodies = body;
         }
 
+        // TODO: Color enumı alınıp ViewBag e aktarıldı.
+        private void GetColorFromEnum()
+        {
+            string[] colorEnums = Enum.GetNames(typeof(Color));
+            List<SelectListItem> color = new List<SelectListItem>();
+            foreach (string item in colorEnums)
+            {
+                color.Add(new SelectListItem { Text = item, Value = item });
+            }
+            ViewBag.Color = color;
+        }
         public ActionResult AddProduct()
         {
+            GetBodyFromEnum();
+            GetColorFromEnum();
+            return View();
+        }
+
+        public ActionResult AddProduct(Product p)
+        {
+            GetBodyFromEnum();
+            GetColorFromEnum();
+
+            if (p.Description!=null && p.ProductTitle!=null) //buraya bak
+            {
+                _productService.Add(p);
+            }
             return View();
         }
 

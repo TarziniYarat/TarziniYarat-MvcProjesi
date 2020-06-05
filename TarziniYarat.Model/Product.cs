@@ -21,8 +21,8 @@ namespace TarziniYarat.Model
         public string Description { get; set; }
         public int UnitsInStock { get; set; }
         public string ProductTitle { get; set; }
-        public string BodySize { get; set; }
-        public string Color { get; set; }
+        public Size BodySize { get; set; }
+        public Color Color { get; set; }
 
         //Navigation prop
         public Category Category { get; set; }
