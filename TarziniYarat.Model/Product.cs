@@ -30,4 +30,26 @@ namespace TarziniYarat.Model
         public ICollection<OrderDetails> OrderDetails { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }
+
+    public enum Color
+    {
+        Kırmızı,
+        Sarı,
+        Siyah,
+        Kahverengi,
+        Mavi,
+        Mor,
+        Yeşil,
+        Turuncu
+    }
+
+    public enum Size
+    {
+        XS,
+        S,
+        M,
+        L,
+        XL,
+        XXL
+    }
 }
