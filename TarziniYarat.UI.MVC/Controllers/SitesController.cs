@@ -36,6 +36,10 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
+        public ActionResult BlogDetail()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             return View();
