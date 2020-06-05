@@ -1,9 +1,11 @@
 ﻿namespace TarziniYarat.DataAccess.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TarziniYarat.Model;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext>
     {
@@ -14,10 +16,16 @@
 
         protected override void Seed(TarziniYarat.DataAccess.Concrete.EntityFramework.TarziniYaratDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            List<Role> roles = new List<Role>()
+            {
+                new Role(){RoleName="Admin"},
+                new Role(){RoleName="Uye"},
+                new Role(){RoleName="Modelist"},
+                new Role(){RoleName="Ziyaretci"},
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data.
+            };
+            context.Roles.AddRange(roles);
+            context.SaveChanges();
         }
     }
 }
