@@ -635,7 +635,7 @@ a {
     }
 
         .blog_banner .banner_inner .overlay {
-            background: url(../../Assets/img/checkout-bg.jpg) no-repeat scroll center center;
+            background: url(../img/banner-2.jpg) no-repeat scroll center center;
             opacity: .5;
             height: 125%;
             position: absolute;
