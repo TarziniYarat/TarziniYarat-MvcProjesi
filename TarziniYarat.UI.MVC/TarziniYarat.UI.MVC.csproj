@@ -1734,6 +1734,8 @@
     <Content Include="Assets\img\c-logo-3.png" />
     <Content Include="Assets\img\c-logo-4.png" />
     <Content Include="Assets\img\c-logo-5.png" />
+    <Content Include="Assets\img\cat-post-2.jpg" />
+    <Content Include="Assets\img\cat-post-3.jpg" />
     <Content Include="Assets\img\checkout-bg.jpg" />
     <Content Include="Assets\img\deal1.jpg" />
     <Content Include="Assets\img\f-p-1.jpg" />
@@ -1752,6 +1754,11 @@
     <Content Include="Assets\img\Image-08.jpg" />
     <Content Include="Assets\img\login.jpg" />
     <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\m-blog-1.jpg" />
+    <Content Include="Assets\img\m-blog-2.jpg" />
+    <Content Include="Assets\img\m-blog-3.jpg" />
+    <Content Include="Assets\img\m-blog-4.jpg" />
+    <Content Include="Assets\img\m-blog-5.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\imagesloaded.pkgd.min.js" />
     <Content Include="Assets\js\isotope-min.js" />
@@ -2234,7 +2241,6 @@
     <Content Include="Areas\Admin\Views\AdminProcess\ProductList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\CategoryList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminProcess\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\BrandList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\PersonList.cshtml" />
@@ -2242,6 +2248,7 @@
     <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
     <Content Include="Areas\Admin\Views\MembersOrder\StokTraking.cshtml" />
     <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\AddProduct.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
@@ -2265,6 +2272,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TarziniYarat.BusinessLogic\TarziniYarat.BusinessLogic.csproj">
+      <Project>{2111b1f7-742b-4ee3-98b5-1de01cca5792}</Project>
+      <Name>TarziniYarat.BusinessLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TarziniYarat.Model\TarziniYarat.Model.csproj">
+      <Project>{c689f3f1-5d65-4b47-9dee-abeff0630958}</Project>
+      <Name>TarziniYarat.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
