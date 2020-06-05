@@ -2167,6 +2167,16 @@
     <Content Include="Assets\fonts\FontAwesome.otf" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
+    <Content Include="Views\Sites\HomePage.cshtml" />
+    <Content Include="Views\Sites\Shop.cshtml" />
+    <Content Include="Views\Sites\Combine.cshtml" />
+    <Content Include="Views\Sites\CreateCombine.cshtml" />
+    <Content Include="Views\Sites\ViewCombine.cshtml" />
+    <Content Include="Views\Sites\AllViewCombine.cshtml" />
+    <Content Include="Views\Sites\Blog.cshtml" />
+    <Content Include="Views\Sites\Login.cshtml" />
+    <Content Include="Views\Sites\Registration.cshtml" />
+    <Content Include="Views\Sites\Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2182,7 +2192,6 @@
     <Folder Include="Assets\js\" />
     <Folder Include="Assets\scss\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Sites\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
