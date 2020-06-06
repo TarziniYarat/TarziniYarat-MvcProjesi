@@ -1769,6 +1769,9 @@
     <Content Include="Assets\img\post-img1.jpg" />
     <Content Include="Assets\img\post-img2.jpg" />
     <Content Include="Assets\img\prev.jpg" />
+    <Content Include="Assets\img\review-1.png" />
+    <Content Include="Assets\img\review-2.png" />
+    <Content Include="Assets\img\review-3.png" />
     <Content Include="Assets\img\s-product-1.jpg" />
     <Content Include="Assets\img\s-product-s-2.jpg" />
     <Content Include="Assets\img\s-product-s-3.jpg" />
