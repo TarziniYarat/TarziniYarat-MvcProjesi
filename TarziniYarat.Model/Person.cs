@@ -16,7 +16,7 @@ namespace TarziniYarat.Model
         }
         public int PersonID { get; set; }
         public int RoleID { get; set; }
-        public int PersonDetailsID { get; set; }
+        public int? PersonDetailsID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string TCKN { get; set; }

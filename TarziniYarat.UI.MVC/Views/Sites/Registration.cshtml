@@ -35,27 +35,33 @@
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner reg_form">
-                    @using (Html.BeginForm("Kayıt Ol", "Registration", FormMethod.Post, new { id = 3 }))
+                    @using (Html.BeginForm("Registration", "Sites", FormMethod.Post,new { id = "contactForm" }))
                     {
                         <h3>Yeni Hesap Oluştur</h3>
-                        <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        @*<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">*@
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="TCKN" name="TCKN" placeholder="T.C. Kimlik Numarası" required autofocus>
+                                @Html.TextBoxFor(a => a.TCKN, new { @class = "form-control", type = "text", placeholder = "T.C. Kimlik Numarası", required = "required", autofocus = "autofocus" })
+                                @*<input type="number" class="form-control" id="TCKN" name="TCKN" placeholder="T.C. Kimlik Numarası" required autofocus>*@
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="Name" name="Name" placeholder="Ad" required>
+                                @Html.TextBoxFor(a => a.Name, new { @class = "form-control", type = "text", placeholder = "Ad", required = "required"})
+                                @*<input type="text" class="form-control" id="Name" name="Name" placeholder="Ad" required>*@
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="Surname" name="Surname" placeholder="Soyad" required>
+                                @Html.TextBoxFor(a => a.Surname, new { @class = "form-control", type = "text", placeholder = "Soyad", required = "required" })
+                                @*<input type="text" class="form-control" id="Surname" name="Surname" placeholder="Soyad" required>*@
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="date" class="form-control" id="BirthDate" name="BirthDate" placeholder="Doğum Tarihi" required>
+                                @Html.TextBoxFor(a => a.BirthDate, new { @class = "form-control", type = "date", placeholder = "Doğum Tarihi", required = "required" })
+                                @*<input type="date" class="form-control" id="BirthDate" name="BirthDate" placeholder="Doğum Tarihi" required>*@
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="email" class="form-control" id="Username" name="Username" placeholder="Kullanıcı Adı" required>
+                                @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", type = "email", placeholder = "Kullanıcı Adı", required = "required" })
+                                @*<input type="email" class="form-control" id="Username" name="Username" placeholder="Kullanıcı Adı" required>*@
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="Password" name="Password" placeholder="Şifre" required>
+                                @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "text", placeholder = "Şifre", required = "required" })
+                                @*<input type="text" class="form-control" id="Password" name="Password" placeholder="Şifre" required>*@
                             </div>
                             @*<div class="col-md-12 form-group">
                                     <div class="creat_account">
@@ -64,17 +70,16 @@
                                     </div>
                                 </div>*@
                         <div class="col-md-12 form-group">
-                            @*@Html.ActionLink("Kayıt Ol","WaitPage",new { id=3 },new { @class= "btn submit_btn", type= "submit", value= "submit" })*@
-                            <button class="btn btn-info" type="submit">Kayıt Ol</button>
+                            @*@Html.ActionLink("Kayıt Ol","Registration",new { id=3 },new { @class= "btn submit_btn", type= "submit", value= "submit" })*@
+                            <button class="btn btn-info form-control" type="submit">Kayıt Ol</button>
                             @*<button type="submit" value="submit" class="btn submit_btn">Kayıt Ol</button>*@
 
                         </div>
                             <div class="col-md-12 form-group">
                                 @Html.ActionLink("Zaten hesabınız var mı?", "Login")
                             </div>
-                        </form>
+                        @*</form>*@
                     }
-
                 </div>
             </div>
         </div>

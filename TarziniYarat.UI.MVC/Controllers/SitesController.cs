@@ -75,18 +75,20 @@ namespace TarziniYarat.UI.MVC.Controllers
                 person.Username = model.UserName;
                 person.Password = model.Password;
                 person.BirthDate = model.BirthDate.ToString();
-                person.Role = _roleService.GetRoleByName("Ziyaretci");
+
+                person.RoleID = 4;
 
                 try
                 {
                     _personService.Add(person);
-                    //return RedirectToAction("Login");
-                    return RedirectToAction("WaitPage");
+                    
+                    
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                 }
+                return RedirectToAction("WaitPage");
             }
             else
             {
