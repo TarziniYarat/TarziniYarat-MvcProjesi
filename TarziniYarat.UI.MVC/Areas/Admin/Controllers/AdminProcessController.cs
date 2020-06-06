@@ -99,7 +99,17 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
         public ActionResult CategoryList()
         {
-            return View();
+            List<Category> categoryList = _categoryService.GetAll();
+
+            return View(categoryList);
+        }
+        public JsonResult ActivateCategory(int categoryID)
+        {
+            Category category = _categoryService.GetByID(categoryID);
+            category.IsActive = true;
+            _categoryService.Update(category);
+            return Json("ok", JsonRequestBehavior.AllowGet);
+
         }
 
         public ActionResult AddCategory()
@@ -115,7 +125,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
                 Category category = new Category();
                 category.CategoryName = model.CategoryName;
                 category.Description = model.Description;
-                //category.CategoryID = 1;
                 try
                 {
                     _categoryService.Add(category);
@@ -128,10 +137,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             else
             {
-                ViewBag.Hata = "Bilgilerinizi kontrol ediniz. " +
-                    "Şifreniz en az 6 karakterli olmalı. En az 1 sayı ve 1 harf içermelidir. " +
-                    "Kimlik numaranız 11 rakamdan az olamaz.";
-                //ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
+                ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
             }
             return View();
         }

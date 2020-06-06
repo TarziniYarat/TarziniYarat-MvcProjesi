@@ -4,7 +4,8 @@
     ViewBag.Title = "AddCategory";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-@using (Html.BeginForm("AddCategory", "AdminProcess", FormMethod.Post))
+
+@using (Html.BeginForm())
 {
     <div class="col-md-12 form-group">
         @Html.TextBoxFor(a => a.CategoryName, new { @class = "form-control", type = "text", placeholder = "Kategori adı giriniz", required = "required", autofocus = "autofocus" })
@@ -19,3 +20,4 @@
 <div>
     @Html.ActionLink("Kategori Listesine Dön", "CategoryList")
 </div>
+}
