@@ -14,12 +14,14 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         ICategoryService _categoryService;
         IBrandService _brandService;
         IPersonService _personService;
-        public AdminProcessController(IProductService productService, ICategoryService categoryService, IBrandService brandService, IPersonService personService)
+        IShipperService _shipperService;
+        public AdminProcessController(IProductService productService, ICategoryService categoryService, IBrandService brandService, IPersonService personService, IShipperService shipperService)
         {
             _productService = productService;
             _categoryService = categoryService;
             _brandService = brandService;
             _personService = personService;
+            _shipperService = shipperService;
         }
         public ActionResult ProductList()
         {
@@ -190,6 +192,16 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         public JsonResult DeletePerson()
         {
             return Json(JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ShipperList()
+        {
+            List<Shipper> shippers = _shipperService.GetAll();
+            return View(shippers);
+        }
+        public JsonResult DeleteShipper(int shipperID)
+        {
+            _shipperService.Delete(shipperID);
+            return Json("ok", JsonRequestBehavior.AllowGet);
         }
     }
 }

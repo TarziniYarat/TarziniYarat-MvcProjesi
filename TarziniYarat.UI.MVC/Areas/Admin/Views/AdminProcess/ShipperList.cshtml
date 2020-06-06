@@ -1,0 +1,44 @@
+﻿@model List<TarziniYarat.Model.Shipper>
+
+@{
+    ViewBag.Title = "ShipperList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>Kargo Şirketleri</h2>
+<button class="btn btn-success">Yeni Kargo Şirketi Ekle</button>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Şirket Adı</th>
+            <th>Telefon Numarası</th>
+            <th>Sil</th>
+        </tr>
+        @foreach (TarziniYarat.Model.Shipper item in Model)
+        {
+<tr>
+    <td>@item.CompanyName</td>
+    <td>@item.Phone</td>
+    <td><button class="btn btn-danger btnDelete" data-shipperID="@item.ShipperID">Sil</button></td>
+</tr>}
+    </thead>
+</table>
+@section scripts{
+    <script>$(".btnDelete").click(function () {
+            var shipperID = $(this).attr("data-shipperID");
+
+            $.ajax({
+                type: "GET",
+                url: "/AdminProcess/DeleteShipper/" + shipperID,
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Başarıyla silindi");
+                    }
+                    else {
+                        alert("Aktifleştirmede bir hata oluştu.");
+                    }
+                }
+            });
+        });</script>
+}
