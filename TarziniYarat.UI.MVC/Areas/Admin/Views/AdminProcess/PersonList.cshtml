@@ -1,8 +1,29 @@
-﻿
+﻿@model List<TarziniYarat.Model.Person>
 @{
     ViewBag.Title = "PersonList";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>PersonList</h2>
+<table class="table table-bordered table-striped" >
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Kullanıcı Adı</th>
+            <th>Aktiflik</th>
+            <th>Aktifleştirme</th>
+        </tr>
+        @foreach (TarziniYarat.Model.Person item in Model)
+        {
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Surname</td>
+        <td>@item.Username</td>
+        <td>@item.IsActive</td>
+        <td>@Html.ActionLink("Aktifleştir", "", null, new { @class = "btn btn-primary" })</td>
+    </tr>
+        }
+    </thead>
+</table>
 
