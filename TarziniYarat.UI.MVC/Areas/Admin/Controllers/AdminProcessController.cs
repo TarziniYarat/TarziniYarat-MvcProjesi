@@ -13,11 +13,13 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         IProductService _productService;
         ICategoryService _categoryService;
         IBrandService _brandService;
-        public AdminProcessController(IProductService productService, ICategoryService categoryService, IBrandService brandService)
+        IPersonService _personService;
+        public AdminProcessController(IProductService productService, ICategoryService categoryService, IBrandService brandService, IPersonService personService)
         {
             _productService = productService;
             _categoryService = categoryService;
             _brandService = brandService;
+            _personService = personService;
         }
         public ActionResult ProductList()
         {
@@ -104,6 +106,21 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            try
+            {
+                _categoryService.Add(category);
+                return RedirectToAction("CategoryList");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         public JsonResult DeleteCategory()
         {
             return Json(JsonRequestBehavior.AllowGet);
@@ -120,13 +137,21 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddBrand(Brand brand)
+        {
+            _brandService.Add(brand);
+            return RedirectToAction("BrandList");
+        }
         public JsonResult DeleteBrand()
         {
             return Json(JsonRequestBehavior.AllowGet);
         }
         public ActionResult PersonList()
         {
-            return View();
+            List<Person> personList=_personService.GetAll();
+
+            return View(personList);
         }
 
         public JsonResult AddPerson()

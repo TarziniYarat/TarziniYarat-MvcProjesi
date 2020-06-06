@@ -2277,7 +2277,6 @@
     <Content Include="Areas\Admin\Views\AdminProcess\ProductList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\CategoryList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\BrandList.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\PersonList.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\AddMember.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
@@ -2285,6 +2284,7 @@
     <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />
