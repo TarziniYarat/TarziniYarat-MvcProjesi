@@ -88,7 +88,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             GetAllBrands();
             GetAllCategories();
 
-            if (p.Description!=null && p.ProductTitle!=null) //buraya bak
+            if (p.Description != null && p.ProductTitle != null) //buraya bak
             {
                 _productService.Add(p);
             }
@@ -143,6 +143,32 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return View();
         }
+
+        public ActionResult UpdateCategory(int catID)
+        {
+            Category category = _categoryService.GetByID(catID);
+            return View(category);
+        }
+
+
+        [HttpPost]
+        public ActionResult UpdateCategory(Category _category)
+        {
+            try
+            {
+                Category category = _categoryService.GetByID(_category.CategoryID);
+                category.Description = _category.Description;
+                category.CategoryName = _category.CategoryName;
+                _categoryService.Update(category);
+                return RedirectToAction("CategoryList");
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Güncelleme başarısız oldu.");
+            }
+        }
         public JsonResult DeleteCategory()
         {
             return Json(JsonRequestBehavior.AllowGet);
@@ -151,7 +177,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
         public ActionResult BrandList()
         {
-            return View();
+            return View(_brandService.GetAll());
         }
 
         public ActionResult AddBrand()
@@ -165,13 +191,48 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _brandService.Add(brand);
             return RedirectToAction("BrandList");
         }
-        public JsonResult DeleteBrand()
+        [HttpPost]
+        public JsonResult UpdateBrand(Brand brd)
         {
-            return Json(JsonRequestBehavior.AllowGet);
+            try
+            {
+                Brand brand = _brandService.GetByID(brd.BrandID);
+                brand.CompanyName = brd.CompanyName;
+                _brandService.Update(brand);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost]
+        public JsonResult GetBrand(int id)
+        {
+            Brand brand = _brandService.GetByID(id);
+
+            return Json(brand, JsonRequestBehavior.AllowGet);
+
+        }
+        [HttpPost]
+        public JsonResult DeleteBrand(int id)
+        {
+            try
+            {
+                _brandService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
+
         public ActionResult PersonList()
         {
-            List<Person> personList=_personService.GetAll();
+            List<Person> personList = _personService.GetAll();
 
             return View(personList);
         }
@@ -182,11 +243,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
         public JsonResult ActivatePerson(int personID)
         {
-            Person person=_personService.GetByID(personID);
+            Person person = _personService.GetByID(personID);
             person.IsActive = true;
-            _personService.Update(person);            
-            return Json("ok",JsonRequestBehavior.AllowGet);
-            
+            _personService.Update(person);
+            return Json("ok", JsonRequestBehavior.AllowGet);
+
         }
 
         public JsonResult DeletePerson()

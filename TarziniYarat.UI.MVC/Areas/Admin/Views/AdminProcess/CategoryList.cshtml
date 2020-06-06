@@ -1,48 +1,51 @@
-﻿@model List<TarziniYarat.Model.Category>
+﻿@model IEnumerable<TarziniYarat.Model.Category>
+
 @{
     ViewBag.Title = "CategoryList";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>CategoryList</h2>
-<table class="table table-bordered table-striped">
-    <thead>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>Kategory Adı</th>
-            <th>Açıklama</th>
-            <th>Aktif Mi</th>
-            <th>Düzenle</th>
-
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
         </tr>
-        @foreach (TarziniYarat.Model.Category item in Model)
-        {
-            <tr>
-                <td>@item.CategoryName</td>
-                <td>@item.Description</td>
-                <td>@item.IsActive</td>
-                <td><button class="btn btn-primary btnActivate" data-categoryID="@item.CategoryID">Aktifleştir</button></td>
-            </tr>
-        }
-    </thead>
+    }
+
 </table>
-
-@section scripts{
-    <script>
-        $(".btnActivate").click(function () {
-            var categoryID = $(this).attr("data-categoryID");
-
-            $.ajax({
-                type: "GET",
-                url: "/AdminProcess/ActivateCategory/" + categoryID,
-                success: function (data) {
-                    if (data == "ok") {
-                        alert("Başarıyla silindi");
-                    }
-                    else {
-                        alert("Aktifleştirmede bir hata oluştu.");
-                    }
-                }
-            });
-        });
-    </script>
-}
