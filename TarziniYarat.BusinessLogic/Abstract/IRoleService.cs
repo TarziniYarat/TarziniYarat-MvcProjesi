@@ -9,5 +9,6 @@ namespace TarziniYarat.BusinessLogic.Abstract
 {
     public interface IRoleService:IBaseService<Role>
     {
+        Role GetRoleByName(string name);
     }
 }

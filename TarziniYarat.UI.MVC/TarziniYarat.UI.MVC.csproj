@@ -2036,6 +2036,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2284,6 +2285,7 @@
     <Content Include="Views\Sites\Contact.cshtml" />
     <Content Include="Views\Sites\BlogDetail.cshtml" />
     <Content Include="Views\Sites\ProductDetail.cshtml" />
+    <Content Include="Views\Sites\WaitPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2294,7 +2296,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TarziniYarat.BusinessLogic\TarziniYarat.BusinessLogic.csproj">

@@ -39,6 +39,11 @@ namespace TarziniYarat.BusinessLogic.Concrete
             return _roleDAL.Get(a => a.RoleID == entityID);
         }
 
+        public Role GetRoleByName(string name)
+        {
+            return _roleDAL.Get(a => a.RoleName == name);
+        }
+
         public bool Update(Role entity)
         {
             return _roleDAL.Update(entity) > 0;
