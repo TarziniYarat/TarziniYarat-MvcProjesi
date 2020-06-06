@@ -1,6 +1,7 @@
-﻿
+﻿@using TarziniYarat.UI.MVC.Models
+@model LoginViewModel
 @{ ViewBag.Title = "Login";
-                Layout = "~/Views/Shared/_LayoutSites.cshtml"; }
+    Layout = "~/Views/Shared/_LayoutSites.cshtml"; }
 
 
 <!--================Home Banner Area =================-->
@@ -41,7 +42,8 @@
                     <h3>
                         Siteye Girmek İçin Giriş Yapın
                     </h3>
-                    <form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+
+                    <form class="row login_form" action="/Sites/Login" method="post" id="contactForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="name" name="Username" placeholder="Kullanıcı Adı">
                         </div>

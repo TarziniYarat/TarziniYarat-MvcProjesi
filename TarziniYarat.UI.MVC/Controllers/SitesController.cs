@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
 using TarziniYarat.UI.MVC.Models;
+using TarziniYarat.UI.MVC.Views;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
@@ -57,6 +58,31 @@ namespace TarziniYarat.UI.MVC.Controllers
         }
         public ActionResult Login()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginViewModel login)
+        {
+            List<Person> persons = _personService.GetAll();
+            foreach (var item in persons)
+            {
+                if (login.UserName == item.Username && login.Password == item.Password)
+                {
+                    if (item.RoleID == 1)
+                    {
+                        return RedirectToAction("Index", "Admin", new { area = "Admin", id = item.PersonID });
+                    }
+                    else
+                    {
+                        throw new Exception("admin değildir");
+                    }
+                }
+                else
+                {
+                    throw new Exception("Kullanıcı adı veya şifre hatalı");
+                }
+
+            }
             return View();
         }
         public ActionResult Registration()
