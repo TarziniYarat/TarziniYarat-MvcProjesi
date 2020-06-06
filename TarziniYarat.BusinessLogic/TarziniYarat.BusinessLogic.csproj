@@ -73,6 +73,7 @@
     <Compile Include="Concrete\RoleService.cs" />
     <Compile Include="Concrete\ShipperService.cs" />
     <Compile Include="NinjectModuleDAL.cs" />
+    <Compile Include="PersonHelpers\IPersonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

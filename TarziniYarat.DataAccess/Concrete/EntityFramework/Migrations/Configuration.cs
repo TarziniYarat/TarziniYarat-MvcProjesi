@@ -23,7 +23,7 @@
                 new Role(){RoleName="Admin"},
                 new Role(){RoleName="Uye"},
                 new Role(){RoleName="Modelist"},
-                new Role(){RoleName="Ziyaretci", IsActive=false},
+                new Role(){RoleName="Ziyaretci"},
 
             };
             context.Roles.AddRange(roles);
