@@ -109,14 +109,16 @@ namespace TarziniYarat.UI.MVC.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ViewBag.Hata = ex.Message;
-                        //ModelState.AddModelError("", ex.Message);
+                    ModelState.AddModelError("", ex.Message);
                 }
                 return RedirectToAction("WaitPage");
             }
             else
             {
-                ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
+                ViewBag.Hata = "Bilgilerinizi kontrol ediniz. " +
+                    "Şifreniz en az 6 karakterli olmalı. En az 1 sayı ve 1 harf içermelidir. " +
+                    "Kimlik numaranız 11 rakamdan az olamaz.";
+                //ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
             }
             return View();
         }
