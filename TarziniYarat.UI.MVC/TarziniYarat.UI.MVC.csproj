@@ -1769,6 +1769,10 @@
     <Content Include="Assets\img\post-img1.jpg" />
     <Content Include="Assets\img\post-img2.jpg" />
     <Content Include="Assets\img\prev.jpg" />
+    <Content Include="Assets\img\s-product-1.jpg" />
+    <Content Include="Assets\img\s-product-s-2.jpg" />
+    <Content Include="Assets\img\s-product-s-3.jpg" />
+    <Content Include="Assets\img\s-product-s-4.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\contact.js" />
     <Content Include="Assets\js\gmaps.min.js" />
@@ -2276,6 +2280,7 @@
     <Content Include="Views\Sites\Registration.cshtml" />
     <Content Include="Views\Sites\Contact.cshtml" />
     <Content Include="Views\Sites\BlogDetail.cshtml" />
+    <Content Include="Views\Sites\ProductDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

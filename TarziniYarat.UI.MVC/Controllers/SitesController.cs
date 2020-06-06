@@ -16,6 +16,10 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
+        public ActionResult ProductDetail()
+        {
+            return View();
+        }
         public ActionResult Combine()
         {
             return View();
