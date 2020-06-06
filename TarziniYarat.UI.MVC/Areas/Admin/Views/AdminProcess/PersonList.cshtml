@@ -5,7 +5,7 @@
 }
 
 <h2>PersonList</h2>
-<table class="table table-bordered table-striped" >
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>Ad</th>
@@ -16,14 +16,35 @@
         </tr>
         @foreach (TarziniYarat.Model.Person item in Model)
         {
-    <tr>
-        <td>@item.Name</td>
-        <td>@item.Surname</td>
-        <td>@item.Username</td>
-        <td>@item.IsActive</td>
-        <td>@Html.ActionLink("Aktifleştir", "", null, new { @class = "btn btn-primary" })</td>
-    </tr>
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td>@item.Username</td>
+                <td>@item.IsActive</td>
+                <td><button class="btn btn-primary btnActivate" data-personID="@item.PersonID">Aktifleştir</button></td>
+            </tr>
         }
     </thead>
 </table>
+
+@section scripts{
+    <script>
+        $(".btnActivate").click(function () {
+            var personID = $(this).attr("data-personID");
+
+            $.ajax({
+                type: "GET",
+                url: "/AdminProcess/ActivatePerson/" + personID,
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Başarıyla silindi");
+                    }
+                    else {
+                        alert("Aktifleştirmede bir hata oluştu.");
+                    }
+                }
+            });
+        });
+    </script>
+}
 
