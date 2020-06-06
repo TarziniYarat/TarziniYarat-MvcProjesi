@@ -1770,12 +1770,16 @@
     <Content Include="Assets\img\post-img2.jpg" />
     <Content Include="Assets\img\prev.jpg" />
     <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\contact.js" />
+    <Content Include="Assets\js\gmaps.min.js" />
     <Content Include="Assets\js\imagesloaded.pkgd.min.js" />
     <Content Include="Assets\js\isotope-min.js" />
     <Content Include="Assets\js\jquery-3.2.1.min.js" />
     <Content Include="Assets\js\jquery.ajaxchimp.min.js" />
     <Content Include="Assets\js\jquery.counterup.js" />
+    <Content Include="Assets\js\jquery.form.js" />
     <Content Include="Assets\js\jquery.nice-select.min.js" />
+    <Content Include="Assets\js\jquery.validate.min.js" />
     <Content Include="Assets\js\jquery.waypoints.min.js" />
     <Content Include="Assets\js\mail-script.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
