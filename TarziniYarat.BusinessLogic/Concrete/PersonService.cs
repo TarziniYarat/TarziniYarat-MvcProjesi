@@ -21,6 +21,8 @@ namespace TarziniYarat.BusinessLogic.Concrete
         public bool Add(Person entity)
         {
             return _personDAL.Add(entity) > 0;
+
+
         }
 
         public bool Delete(int entityID)

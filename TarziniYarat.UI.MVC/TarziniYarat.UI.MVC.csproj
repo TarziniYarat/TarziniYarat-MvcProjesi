@@ -2315,9 +2315,9 @@
       <Project>{2111b1f7-742b-4ee3-98b5-1de01cca5792}</Project>
       <Name>TarziniYarat.BusinessLogic</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TarziniYarat.DataAccess\TarziniYarat.DataAccess.csproj">
-      <Project>{C6A0060B-EDB5-411E-946C-E8DF82221BA2}</Project>
-      <Name>TarziniYarat.DataAccess</Name>
+    <ProjectReference Include="..\TarziniYarat.Core\TarziniYarat.Core.csproj">
+      <Project>{4828413f-82ab-4709-aad2-a55d34de9c3d}</Project>
+      <Name>TarziniYarat.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\TarziniYarat.Model\TarziniYarat.Model.csproj">
       <Project>{c689f3f1-5d65-4b47-9dee-abeff0630958}</Project>

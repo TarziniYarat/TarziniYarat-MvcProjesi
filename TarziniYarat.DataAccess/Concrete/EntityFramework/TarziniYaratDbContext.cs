@@ -15,7 +15,7 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework
         public TarziniYaratDbContext()
            : base("name=TarziniYaratConnStr")
         {
-
+            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
         }
 
         public DbSet<Role> Roles { get; set; }

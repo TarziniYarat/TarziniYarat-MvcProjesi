@@ -75,8 +75,9 @@ namespace TarziniYarat.UI.MVC.Controllers
                 person.Username = model.UserName;
                 person.Password = model.Password;
                 person.BirthDate = model.BirthDate.ToString();
-
+                person.TCKN = model.TCKN;
                 person.RoleID = 4;
+                //person.PersonID = 1;
 
                 try
                 {
