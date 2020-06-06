@@ -75,7 +75,7 @@ namespace TarziniYarat.UI.MVC.Controllers
                 person.Username = model.UserName;
                 person.Password = model.Password;
                 person.BirthDate = model.BirthDate.ToString();
-                person.Role = _roleService.GetRoleByName("Manager");
+                person.Role = _roleService.GetRoleByName("Ziyaretci");
 
                 try
                 {

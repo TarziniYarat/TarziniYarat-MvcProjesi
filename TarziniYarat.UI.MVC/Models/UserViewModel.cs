@@ -20,7 +20,7 @@ namespace TarziniYarat.UI.MVC.Models
 
         public DateTime BirthDate { get; set; }
 
-        [MinLength(6)]
+        [MinLength(11)]
         public string TCKN { get; set; }
     }
 }
