@@ -137,6 +137,14 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             return Json(JsonRequestBehavior.AllowGet);
         }
+        public JsonResult ActivatePerson(int personID)
+        {
+            Person person=_personService.GetByID(personID);
+            person.IsActive = true;
+            _personService.Update(person);            
+            return Json("ok",JsonRequestBehavior.AllowGet);
+            
+        }
 
         public JsonResult DeletePerson()
         {
