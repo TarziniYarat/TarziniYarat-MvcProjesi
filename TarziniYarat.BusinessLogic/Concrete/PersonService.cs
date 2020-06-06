@@ -36,22 +36,22 @@ namespace TarziniYarat.BusinessLogic.Concrete
 
         public void CheckPassword(string password)
         {
-            string karakter = "abcdefghijklmnoprstuvyz0123456789";
-            if (password.Contains(karakter))
-            {
-                if (password.Length < 6)
+            //string karakter = "abcdefghijklmnoprstuvyz0123456789";
+            //if (password.Contains(karakter))
+            //{
+                if (password.Length < 7)
                 {
                     throw new Exception("Şifre 6 karakterden az olamaz.");
                 }
-                else if (password.Length > 6)
+                else if (password.Length > 7)
                 {
                     throw new Exception("Şifre 6 karakterden fazla olamaz.");
                 }
-            }
-            else
-            {
-                throw new Exception("Şifre en az bir harf ve sayı içermelidir.");
-            }
+            //}
+            //else
+            //{
+            //    throw new Exception("Şifre en az bir harf ve sayı içermelidir.");
+            //}
            
         }
 

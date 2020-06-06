@@ -108,18 +108,32 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddCategory(Category category)
+        public ActionResult AddCategory(Category model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                _categoryService.Add(category);
-                return RedirectToAction("CategoryList");
+                Category category = new Category();
+                category.CategoryName = model.CategoryName;
+                category.Description = model.Description;
+                category.CategoryID=1;
+                try
+                {
+                    _categoryService.Add(category);
+                    return RedirectToAction("CategoryList");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-
-                throw;
+                ViewBag.Hata = "Bilgilerinizi kontrol ediniz. " +
+                    "Şifreniz en az 6 karakterli olmalı. En az 1 sayı ve 1 harf içermelidir. " +
+                    "Kimlik numaranız 11 rakamdan az olamaz.";
+                //ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
             }
+            return View();
         }
         public JsonResult DeleteCategory()
         {

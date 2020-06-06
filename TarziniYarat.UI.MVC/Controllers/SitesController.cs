@@ -106,12 +106,12 @@ namespace TarziniYarat.UI.MVC.Controllers
                 try
                 {
                     _personService.Add(person);
+                    return RedirectToAction("WaitPage");
                 }
                 catch (Exception ex)
                 {
                     ModelState.AddModelError("", ex.Message);
                 }
-                return RedirectToAction("WaitPage");
             }
             else
             {

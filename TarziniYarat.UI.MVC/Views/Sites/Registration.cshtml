@@ -44,7 +44,7 @@
                        <br />
                         @*<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">*@
                         <div class="col-md-12 form-group">
-                            @Html.TextBoxFor(a => a.TCKN, new { @class = "form-control", type = "text", placeholder = "T.C. Kimlik Numarası", required = "required", autofocus = "autofocus" })
+                            @Html.TextBoxFor(a => a.TCKN, new { @class = "form-control", type = "number", placeholder = "T.C. Kimlik Numarası", required = "required", autofocus = "autofocus" })
                             @*<input type="number" class="form-control" id="TCKN" name="TCKN" placeholder="T.C. Kimlik Numarası" required autofocus>*@
                         </div>
                         <div class="col-md-12 form-group">
