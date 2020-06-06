@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\EntityFramework\EFRepositoryBase.cs" />
+    <Compile Include="DataAccess\EntityFramework\QueryableExtensions.cs" />
     <Compile Include="DataAccess\EntityFramework\SingletonContext.cs" />
     <Compile Include="DataAccess\IRepository.cs" />
     <Compile Include="Model\BaseEntity.cs" />

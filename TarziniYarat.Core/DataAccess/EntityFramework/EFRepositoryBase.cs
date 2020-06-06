@@ -32,16 +32,32 @@ namespace TarziniYarat.Core.DataAccess.EntityFramework
             return db.SaveChanges();
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter)
+        public TEntity Get(Expression<Func<TEntity, bool>> filter, params Expression<Func<TEntity,object>>[] includes)
         {
-            return entities.SingleOrDefault(filter);
+            if (includes!=null)
+            {
+                return entities.IncludeMultiple(includes).SingleOrDefault(filter);
+            }
+            else
+            {
+                return entities.SingleOrDefault(filter);
+            }
+           
         }
 
-        public ICollection<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public ICollection<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null, params Expression<Func<TEntity, object>>[] includes)
         {
-            if (filter != null)
+            if (filter != null && includes != null)
+            {
+                return entities.IncludeMultiple(includes).Where(filter).ToList();
+            }
+            else if (filter != null)
             {
                 return entities.Where(filter).ToList();
+            }
+            else if (includes != null)
+            {
+                return entities.IncludeMultiple(includes).ToList();
             }
             else
             {

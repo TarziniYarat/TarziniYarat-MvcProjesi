@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
 using TarziniYarat.UI.MVC.Models;
-using TarziniYarat.UI.MVC.Views;
+//using TarziniYarat.UI.MVC.Views;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
@@ -100,16 +100,12 @@ namespace TarziniYarat.UI.MVC.Controllers
                 person.Surname = model.Surname;
                 person.Username = model.UserName;
                 person.Password = model.Password;
-                person.BirthDate = model.BirthDate.ToString();
+                person.BirthDate = model.BirthDate;
                 person.TCKN = model.TCKN;
                 person.RoleID = 4;
-                //person.PersonID = 1;
-
                 try
                 {
                     _personService.Add(person);
-                    
-                    
                 }
                 catch (Exception ex)
                 {
