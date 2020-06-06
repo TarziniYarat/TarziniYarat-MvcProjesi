@@ -115,7 +115,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
                 Category category = new Category();
                 category.CategoryName = model.CategoryName;
                 category.Description = model.Description;
-                category.CategoryID=1;
+                //category.CategoryID = 1;
                 try
                 {
                     _categoryService.Add(category);
