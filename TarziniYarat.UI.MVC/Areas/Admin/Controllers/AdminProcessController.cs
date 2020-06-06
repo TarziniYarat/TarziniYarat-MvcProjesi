@@ -106,6 +106,21 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            try
+            {
+                _categoryService.Add(category);
+                return RedirectToAction("CategoryList");
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         public JsonResult DeleteCategory()
         {
             return Json(JsonRequestBehavior.AllowGet);
@@ -122,6 +137,12 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult AddBrand(Brand brand)
+        {
+            _brandService.Add(brand);
+            return RedirectToAction("BrandList");
+        }
         public JsonResult DeleteBrand()
         {
             return Json(JsonRequestBehavior.AllowGet);

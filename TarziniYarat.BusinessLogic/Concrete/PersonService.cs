@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.BusinessLogic.Abstract;
+using TarziniYarat.BusinessLogic.PersonHelpers;
 using TarziniYarat.DataAccess.Abstract;
 using TarziniYarat.Model;
 
 namespace TarziniYarat.BusinessLogic.Concrete
 {
-    public class PersonService : IPersonService
+    public class PersonService : IPersonService, IPersonHelper
     {
         IPersonDAL _personDAL;
 
@@ -20,9 +21,50 @@ namespace TarziniYarat.BusinessLogic.Concrete
 
         public bool Add(Person entity)
         {
-            return _personDAL.Add(entity) > 0;
+            try
+            {
+                CheckPassword(entity.Password);
+                CheckTCKN(entity.TCKN);
+                entity.IsActive = false;
+                return _personDAL.Add(entity) > 0;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        public void CheckPassword(string password)
+        {
+            string karakter = "abcdefghijklmnoprstuvyz0123456789";
+            if (password.Contains(karakter))
+            {
+                if (password.Length < 6)
+                {
+                    throw new Exception("Şifre 6 karakterden az olamaz.");
+                }
+                else if (password.Length > 6)
+                {
+                    throw new Exception("Şifre 6 karakterden fazla olamaz.");
+                }
+            }
+            else
+            {
+                throw new Exception("Şifre en az bir harf ve sayı içermelidir.");
+            }
+           
+        }
 
+        public void CheckTCKN(string tckn)
+        {
+            if (tckn.Length<11)
+            {
+                throw new Exception("TC Kimlik numaranız 11 Rakamdan daha küçük olamaz.");
+            }
+            else if (tckn.Length>11)
+            {
+                throw new Exception("TC Kimlik numaranız 11 Rakamdan daha büyük olamaz.");
+            }
         }
 
         public bool Delete(int entityID)

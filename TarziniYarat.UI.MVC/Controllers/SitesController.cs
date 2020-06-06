@@ -109,7 +109,8 @@ namespace TarziniYarat.UI.MVC.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", ex.Message);
+                    ViewBag.Hata = ex.Message;
+                        //ModelState.AddModelError("", ex.Message);
                 }
                 return RedirectToAction("WaitPage");
             }
