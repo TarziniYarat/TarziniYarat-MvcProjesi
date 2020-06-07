@@ -8,6 +8,8 @@
 
 <h2>Kargo Şirketleri</h2>
 <button class="btn btn-success">Yeni Kargo Şirketi Ekle</button>
+<br />
+<hr />
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -17,15 +19,17 @@
         </tr>
         @foreach (TarziniYarat.Model.Shipper item in Model)
         {
-<tr>
-    <td>@item.CompanyName</td>
-    <td>@item.Phone</td>
-    <td><button class="btn btn-danger btnDelete" data-shipperID="@item.ShipperID">Sil</button></td>
-</tr>}
+            <tr>
+                <td>@item.CompanyName</td>
+                <td>@item.Phone</td>
+                <td><button class="btn btn-danger btnDelete" data-shipperID="@item.ShipperID">Sil</button></td>
+            </tr>
+}
     </thead>
 </table>
 @section scripts{
-    <script>$(".btnDelete").click(function () {
+    <script>
+    $(".btnDelete").click(function () {
             var shipperID = $(this).attr("data-shipperID");
 
             $.ajax({
@@ -36,7 +40,7 @@
                         alert("Başarıyla silindi");
                     }
                     else {
-                        alert("Aktifleştirmede bir hata oluştu.");
+                        alert("Silmede bir hata oluştu.");
                     }
                 }
             });

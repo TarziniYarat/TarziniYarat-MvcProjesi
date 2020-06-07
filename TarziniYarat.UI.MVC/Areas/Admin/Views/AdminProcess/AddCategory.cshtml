@@ -4,7 +4,8 @@
     ViewBag.Title = "AddCategory";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
-
+<h2>Kategori Ekle</h2>
+<br />
 @using (Html.BeginForm())
 {
     <div class="col-md-12 form-group">
@@ -17,7 +18,8 @@
         <button class="btn btn-info form-control" type="submit">Kaydet</button>
 
     </div>
-<div>
-    @Html.ActionLink("Kategori Listesine Dön", "CategoryList")
-</div>
+    <div>
+        @Html.ActionLink("Kategori Listesine Git", "CategoryList")
+    </div>
 }
+<br />

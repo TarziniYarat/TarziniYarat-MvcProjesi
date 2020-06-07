@@ -4,7 +4,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>PersonList</h2>
+<h2>Kullanıcılar</h2>
+<br />
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -12,7 +13,13 @@
             <th>Soyad</th>
             <th>Kullanıcı Adı</th>
             <th>Aktiflik</th>
-            <th>Aktifleştirme</th>
+            <th>Aktifleştir/Pasifleştir</th>
+            <th>
+                Güncelle
+            </th>
+            <th>
+                Sil
+            </th>
         </tr>
         @foreach (TarziniYarat.Model.Person item in Model)
         {
@@ -21,12 +28,26 @@
                 <td>@item.Surname</td>
                 <td>@item.Username</td>
                 <td>@item.IsActive</td>
-                <td><button class="btn btn-primary btnActivate" data-personID="@item.PersonID">Aktifleştir</button></td>
+                <td>
+                    <button href="#" class="btn btn-primary btnUpdate" data-personID="@item.PersonID">
+                        Aktifleştir/Pasifleştir
+                    </button>
+                </td>
+                <td>
+                    <button href="#" class="btn btn-success btnDelete" data-personID="@item.PersonID">
+                        Güncelle
+                    </button>
+                </td>
+                <td>
+                    <button class="btn btn-danger btnActivate" data-personID="@item.PersonID">
+                       Sil
+                    </button>
+                </td>
             </tr>
         }
     </thead>
 </table>
-
+<br />
 @section scripts{
     <script>
         $(".btnActivate").click(function () {

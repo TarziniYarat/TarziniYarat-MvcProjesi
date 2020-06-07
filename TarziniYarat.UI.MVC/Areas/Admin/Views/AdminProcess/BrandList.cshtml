@@ -4,13 +4,8 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>BrandList</h2>
-
-
-
-<a>
-    <span class="text">Yeni Marka</span>
-</a>
+<h2>Marka Listesi</h2>
+<br />
 <table class="table">
     <tr>
         <th>
@@ -22,7 +17,15 @@
         <th>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
-        <th></th>
+        <th>
+            Güncelle
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Ürünlere Git
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -41,9 +44,13 @@
                 <button href="#" class="btn btn-primary btnUpdate" dataID="@item.BrandID">
                     Güncelle
                 </button>
+            </td>
+            <td>
                 <button href="#" class="btn btn-danger btnDelete" dataBrandID="@item.BrandID">
                     Sil
                 </button>
+            </td>
+            <td>
                 @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.BrandID }, new { @class = "btn btn-success" })
             </td>
         </tr>
@@ -51,6 +58,8 @@
 
 </table>
 
+<br />
+<hr />
 
 <div>
     <h4>Marka Düzenle</h4>
@@ -68,6 +77,8 @@
         <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
     </div>
 </div>
+<br />
+@Html.ActionLink("Marka Ekleme Sayfasına Git", "AddBrand")
 
 @section scripts{
 
