@@ -79,8 +79,16 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         public JsonResult ActivatePerson(int personID)
         {
             Person person = _personService.GetByID(personID);
-            person.IsActive = true;
-            _personService.Update(person);
+            if (person.IsActive==true)
+            {
+                person.IsActive = false;
+                _personService.Update(person);
+            }
+            else
+            {
+                person.IsActive = true;
+                _personService.Update(person);
+            }
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }

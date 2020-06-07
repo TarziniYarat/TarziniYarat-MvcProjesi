@@ -29,17 +29,17 @@
                 <td>@item.Username</td>
                 <td>@item.IsActive</td>
                 <td>
-                    <button href="#" class="btn btn-primary btnUpdate" data-personID="@item.PersonID">
+                    <button href="#" name="personActive" class="btn btn-primary  btnActivate" data="@item.PersonID">
                         Aktifleştir/Pasifleştir
                     </button>
                 </td>
                 <td>
-                    <button href="#" class="btn btn-success btnDelete" data-personID="@item.PersonID">
+                    <button href="#" class="btn btn-success btnUpdate" data="@item.PersonID">
                         Güncelle
                     </button>
                 </td>
                 <td>
-                    <button class="btn btn-danger btnActivate" data-personID="@item.PersonID">
+                    <button href="#" class="btn btn-danger btnDelete" dataPersonID="@item.PersonID">
                        Sil
                     </button>
                 </td>
@@ -50,18 +50,49 @@
 <br />
 @section scripts{
     <script>
-        $(".btnActivate").click(function () {
-            var personID = $(this).attr("data-personID");
+        //$("#btnUpdateChange").click(function () {
+        //    var shipperID = $(this).attr("dataID");
+        //    var shipper = {
+        //        "CompanyName": $("#companyName").val(),
+        //        "Phone": $("#phone").val(),
+        //        "ShipperID": shipperID,
+        //    }
+        //    $.ajax({
+        //        url: "/AdminProcess/UpdateShipper/",
+        //        type: "POST",
+        //        data: shipper,
+        //        success: function (resp) {
+        //            if (resp == "ok") {
+        //                alert("Güncelleme Başarılı")
+        //                window.location.reload();
+        //            }
 
+        //        },
+        //        onerror: function (err) {
+        //            alert("İstek başarısız.")
+        //            console.log(err);
+        //        }
+        //    })
+        //})
+
+        $(".btnActivate").click(function () {
+            var personID = $(this).attr("data");
+            var person = {
+                "IsActıve": $("#personActive").val(),
+                "PersonID": personID,
+            }
             $.ajax({
-                type: "GET",
-                url: "/AdminProcess/ActivatePerson/" + personID,
-                success: function (data) {
-                    if (data == "ok") {
-                        alert("Başarıyla silindi");
+                type: "POST",
+                url: "/AdminProcess/ActivatePerson/"+ personID,
+                data:person,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
                     }
                     else {
-                        alert("Aktifleştirmede bir hata oluştu.");
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
                     }
                 }
             });
