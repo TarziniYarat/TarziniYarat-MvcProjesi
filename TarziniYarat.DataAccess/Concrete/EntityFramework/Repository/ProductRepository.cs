@@ -11,5 +11,6 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Repository
 {
     public class ProductRepository : EFRepositoryBase<Product, TarziniYaratDbContext>, IProductDAL
     {
+
     }
 }
