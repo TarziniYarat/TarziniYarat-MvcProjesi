@@ -2045,6 +2045,7 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminProcessController.cs" />
     <Compile Include="Areas\Admin\Controllers\MembersOrderController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\ShipperProductVM.cs" />
     <Compile Include="Controllers\SitesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2281,12 +2282,12 @@
     <Content Include="Areas\Admin\Views\Admin\AddMember.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\BrowseComment.cshtml" />
     <Content Include="Areas\Admin\Views\MembersOrder\StokTraking.cshtml" />
-    <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddProduct.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\ShipperList.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddShipper.cshtml" />
+    <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />

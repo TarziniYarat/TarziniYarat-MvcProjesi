@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<TarziniYarat.UI.MVC.Areas.Admin.ViewModels.ShipperProductVM>
+
 @{
     ViewBag.Title = "ShipperProduct";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -6,3 +7,52 @@
 
 <h2>ShipperProduct</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PersonSurname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PersonSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

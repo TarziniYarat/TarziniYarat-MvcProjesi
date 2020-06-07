@@ -34,8 +34,10 @@ namespace TarziniYarat.DataAccess.Concrete.EntityFramework.Mappings
                 .WithMany(a => a.Products)
                 .HasForeignKey(a => a.BrandID);
 
+            HasOptional(a => a.Shipper)
+             .WithMany(a => a.Products)
+             .HasForeignKey(a => a.ShipperID);
 
-            
         }
     }
 }
