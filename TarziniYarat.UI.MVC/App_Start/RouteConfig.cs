@@ -14,6 +14,13 @@ namespace TarziniYarat.UI.MVC
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Home",
+                url: "{controller}/{action}/{Username}/{PersonID}",
+                defaults: new { controller = "Home", action = "Index", Username = UrlParameter.Optional, PersonID=UrlParameter.Optional },
+                namespaces: new string[] { "TarziniYarat.UI.MVC.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

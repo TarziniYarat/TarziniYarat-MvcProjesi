@@ -2292,7 +2292,6 @@
     <Content Include="Areas\Admin\Views\AdminProcess\UpdateProduct.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
-    <Content Include="Views\Sites\HomePage.cshtml" />
     <Content Include="Views\Sites\Shop.cshtml" />
     <Content Include="Views\Sites\Combine.cshtml" />
     <Content Include="Views\Sites\CreateCombine.cshtml" />
@@ -2305,6 +2304,7 @@
     <Content Include="Views\Sites\BlogDetail.cshtml" />
     <Content Include="Views\Sites\ProductDetail.cshtml" />
     <Content Include="Views\Sites\WaitPage.cshtml" />
+    <Content Include="Views\Sites\HomePage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

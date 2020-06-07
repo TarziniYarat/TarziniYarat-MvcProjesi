@@ -24,6 +24,10 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
+        public ActionResult Home(int? personID)
+        {
+            return RedirectToAction("HomePage", "Sites", new { id = personID });
+        }
         public ActionResult Shop()
         {
             return View();
@@ -74,11 +78,11 @@ namespace TarziniYarat.UI.MVC.Controllers
                     }
                     else if (item.RoleID==2 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
+                        return RedirectToAction("HomePage", "Sites", new { id = item.PersonID });
                     }
                     else if (item.RoleID==3 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
+                        return RedirectToAction("Home", "Sites", new  { Username = item.Username, PersonID = item.PersonID });
                     }
                 }
                 else
