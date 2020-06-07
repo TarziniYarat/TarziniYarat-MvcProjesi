@@ -26,6 +26,9 @@
             Güncelle
         </th>
         <th>
+            Aktif/Pasif
+        </th>
+        <th>
             Sil
         </th>
         <th>
@@ -35,33 +38,38 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                <button href="#" class="btn btn-primary btnUpdate" dataID="@item.CategoryID">
-                    Güncelle
-                </button>
-            </td>
-            <td>
-                <button href="#" class="btn btn-danger btnDelete" dataCategoryID="@item.CategoryID">
-                    Sil
-                </button>
-            </td>
-            <td>
-                @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.CategoryID }, new { @class = "btn btn-success" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CategoryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsActive)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        <button href="#" class="btn btn-primary btnUpdate" dataID="@item.CategoryID">
+            Güncelle
+        </button>
+    </td>
+    <td>
+        <button href="#" name="categoryActive" class="btn btn-primary  btnActivate" data="@item.CategoryID">
+            Aktif/Pasif
+        </button>
+    </td>
+    <td>
+        <button href="#" class="btn btn-danger btnDelete" dataCategoryID="@item.CategoryID">
+            Sil
+        </button>
+    </td>
+    <td>
+        @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.CategoryID }, new { @class = "btn btn-success" })
+    </td>
+</tr>
     }
 </table>
 <br />
@@ -137,6 +145,31 @@
                 }
             })
         })
+
+        //Pasifleştirme
+
+        $(".btnActivate").click(function () {
+            var categoryID = $(this).attr("data");
+            var category = {
+                "IsActıve": $("#categoryActive").val(),
+                "CategoryID": categoryID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/ActivateCategory/" + categoryID,
+                data: category,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
 
         $(".btnDelete").click(function () {
             var categoryID = $(this).attr("dataCategoryID");

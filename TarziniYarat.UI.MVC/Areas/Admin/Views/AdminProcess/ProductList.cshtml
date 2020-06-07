@@ -8,7 +8,7 @@
 
 <h2>Ürün Listesi</h2>
 <br />
-<table class="table">
+<table class="table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProductTitle)
@@ -25,9 +25,7 @@
         <th>
             @Html.DisplayNameFor(model => model.BodySize)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Photo)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.UnitsInStock)
         </th>
@@ -47,8 +45,9 @@
         <th>
             Sil
         </th>
+
         <th>
-            Ürünlere Git
+            @Html.DisplayNameFor(model => model.Photo)
         </th>
     </tr>
 
@@ -74,10 +73,7 @@
                 @Html.DisplayFor(modelItem => item.BodySize, new { @class = "btnName" })
 
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
 
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UnitsInStock, new { @class = "btnName" })
 
@@ -88,6 +84,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.IsActive)
             </td>
+
             <td>
                 <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
                     Güncelle
@@ -103,10 +100,15 @@
                     Sil
                 </button>
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
+
+            </td>
         </tr>
     }
 
 </table>
+
 
 <br />
 <hr />

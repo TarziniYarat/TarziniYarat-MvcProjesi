@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
+using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
+    [CustomAuthorize(Roles = "Admin")]
     public class AdminProcessController : Controller
     {
         IProductService _productService;
@@ -309,8 +311,16 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         public JsonResult ActivateCategory(int categoryID)
         {
             Category category = _categoryService.GetByID(categoryID);
-            category.IsActive = true;
+            if (category.IsActive == true)
+            {
+                category.IsActive = false;
+            }
+            else
+            {
+                category.IsActive = true;
+            }
             _categoryService.Update(category);
+
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
