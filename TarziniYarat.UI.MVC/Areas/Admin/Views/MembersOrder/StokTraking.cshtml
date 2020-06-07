@@ -11,20 +11,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ProductName)
+            Ürün Adı
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            Kritik Durum
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UnitsInStock)
+            Stok Seviyesi
         </th>
         <th>
             Güncelle
-        </th>
-
-        <th>
-            Sil
         </th>
 
     </tr>
@@ -36,7 +32,15 @@
                 @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
+                @if (item.UnitsInStock < 100)
+                {
+                    <span style="color:red">Stok durumu kritik seviyededir.</span>
+                }
+                else
+                {
+                    <span style="color:lawngreen">Stok durumu iyi seviyededir.</span>
+
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.UnitsInStock)
@@ -44,11 +48,6 @@
             <td>
                 <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
                     Güncelle
-                </button>
-            </td>
-            <td>
-                <button href="#" class="btn btn-danger  btnDelete" dataProductID="@item.ProductID">
-                    Sil
                 </button>
             </td>
         </tr>
@@ -66,9 +65,6 @@
     <form id="UpdateBrand">
 
         <div class="form-group">
-            <div class="input-group">
-                <input class="form-control" type="text" name="productName" id="productName" placeholder="Ürün Adını Giriniz." />
-            </div><br />
             <div class="input-group">
                 <input class="form-control" type="text" name="stokName" id="stokName" placeholder="Stok Miktarı Giriniz." />
             </div>
@@ -89,15 +85,14 @@
 
         $("#btnUpdateChange").click(function () {
             var productID = $(this).attr("dataID");
-            var brand = {
-                "ProductName": $("#productName").val(),
-                "UnitsInStok": $("#stokName").val(),
+            var product = {
+                "UnitsInStock": $("#stokName").val(),
                 "ProductID": productID,
             }
             $.ajax({
-                url: "/AdminProcess/UpdateProduct/",
+                url: "/AdminProcess/UpdateStok/",
                 type: "POST",
-                data: brand,
+                data: product,
                 success: function (resp) {
                     if (resp == "ok") {
                         alert("Güncelleme Başarılı")
@@ -121,8 +116,7 @@
                 type: "POST",
                 success: function (resp) {
                     if (resp != null) {
-                        $("#productName").val(resp.ProductName);
-                        $("#stokName").val(resp.UnitsInStok);
+                        $("#stokName").val(resp.UnitsInStock);
                         $("#btnUpdateChange").attr("dataID", productID);
                     }
                 },
@@ -133,27 +127,7 @@
             })
         })
 
-      
-
-        //Hard Silme
-
-        $(".btnDelete").click(function () {
-            var productID = $(this).attr("dataProductID");
-            $.ajax({
-                url: "/AdminProcess/DeleteProduct/" + productID,
-                type: "POST",
-                success: function (data) {
-                    if (data == "ok") {
-                        alert("Silme İşlemi Başarılı");
-                        window.location.reload();
-                    }
-                },
-                error: function (err) {
-                    alert("Hata Oluştu.");
-                    console.log(err);
-                }
-            });
-        })
+       
     </script>
 
 }

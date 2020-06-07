@@ -94,6 +94,15 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
+
+        public JsonResult UpdateStok(Product p)
+        {
+            Product product = _productService.GetByID(p.ProductID);
+            product.UnitsInStock = p.UnitsInStock;
+            _productService.Update(product);
+            return Json("ok", JsonRequestBehavior.AllowGet);
+           
+        }
         [HttpPost]
         public JsonResult GetProduct(int id)
         {
