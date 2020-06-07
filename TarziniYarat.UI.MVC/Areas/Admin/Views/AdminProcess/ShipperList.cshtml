@@ -27,6 +27,9 @@
             Güncelle
         </th>
         <th>
+            Aktif/Pasif
+        </th>
+        <th>
             Sil
         </th>
         <th>
@@ -36,33 +39,38 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                <button href="#" class="btn btn-primary btnUpdate" dataID="@item.ShipperID">
-                    Güncelle
-                </button>
-            </td>
-            <td>
-                <button href="#" class="btn btn-danger btnDelete" dataShipperID="@item.ShipperID">
-                    Sil
-                </button>
-            </td>
-            <td>
-                @Html.ActionLink("Siparişlere Git", "OrderList", new { brandID = item.ShipperID }, new { @class = "btn btn-success" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @item.IsActive
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        <button href="#" class="btn btn-success btnUpdate" dataID="@item.ShipperID">
+            Güncelle
+        </button>
+    </td>
+    <td>
+        <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.ShipperID">
+            Aktif/Pasif
+        </button>
+    </td>
+    <td>
+        <button href="#" class="btn btn-danger btnDelete" dataShipperID="@item.ShipperID">
+            Sil
+        </button>
+    </td>
+    <td>
+        @Html.ActionLink("Siparişlere Git", "OrderList", new { brandID = item.ShipperID }, new { @class = "btn btn-warning" })
+    </td>
+</tr>
     }
 </table>
 <br />
@@ -94,6 +102,7 @@
 
     <script>
 
+        //Güncelleme İşlemi
 
         $("#btnUpdateChange").click(function () {
             var shipperID = $(this).attr("dataID");
@@ -120,6 +129,8 @@
             })
         })
 
+        //Güncellenecek Verilerin Getirilmesi
+
         $(".btnUpdate").click(function () {
             var shipperID = $(this).attr("dataID");
             $.ajax({
@@ -138,6 +149,34 @@
                 }
             })
         })
+
+
+        //Pasifleştirme
+
+        $(".btnActivate").click(function () {
+            var shipperID = $(this).attr("data");
+            var shipper = {
+                "IsActıve": $("#shipperActive").val(),
+                "ShipperID": shipperID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/ActiveShipper/" + shipperID,
+                data: shipper,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
+        //Hard Silme
 
         $(".btnDelete").click(function () {
             var shipperID = $(this).attr("dataShipperID");

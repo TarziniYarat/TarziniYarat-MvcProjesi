@@ -159,6 +159,22 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             ViewBag.Brands = brands;
         }
 
+        public ActionResult ActiveBrand(int id)
+        {
+            Brand brand = _brandService.GetByID(id);
+            if (brand.IsActive == true)
+            {
+                brand.IsActive = false;
+            }
+            else
+            {
+                brand.IsActive = true;
+            }
+            _brandService.Update(brand);
+
+            return Json("ok", JsonRequestBehavior.AllowGet);
+
+        }
 
         // TODO: Body enumı alınıp ViewBag e aktarıldı.
         private void GetBodyFromEnum()
@@ -363,6 +379,23 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             Shipper shipper = _shipperService.GetByID(id);
 
             return Json(shipper, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ActiveShipper(int id)
+        {
+            Shipper shipper = _shipperService.GetByID(id);
+            if (shipper.IsActive == true)
+            {
+                shipper.IsActive = false;
+            }
+            else
+            {
+                shipper.IsActive = true;
+            }
+            _shipperService.Update(shipper);
+
+            return Json("ok", JsonRequestBehavior.AllowGet);
+
         }
 
         public JsonResult DeleteShipper(int id)

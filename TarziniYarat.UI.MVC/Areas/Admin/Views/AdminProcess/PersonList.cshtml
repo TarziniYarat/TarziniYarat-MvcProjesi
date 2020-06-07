@@ -50,31 +50,6 @@
 <br />
 @section scripts{
     <script>
-        //$("#btnUpdateChange").click(function () {
-        //    var shipperID = $(this).attr("dataID");
-        //    var shipper = {
-        //        "CompanyName": $("#companyName").val(),
-        //        "Phone": $("#phone").val(),
-        //        "ShipperID": shipperID,
-        //    }
-        //    $.ajax({
-        //        url: "/AdminProcess/UpdateShipper/",
-        //        type: "POST",
-        //        data: shipper,
-        //        success: function (resp) {
-        //            if (resp == "ok") {
-        //                alert("Güncelleme Başarılı")
-        //                window.location.reload();
-        //            }
-
-        //        },
-        //        onerror: function (err) {
-        //            alert("İstek başarısız.")
-        //            console.log(err);
-        //        }
-        //    })
-        //})
-
         $(".btnActivate").click(function () {
             var personID = $(this).attr("data");
             var person = {

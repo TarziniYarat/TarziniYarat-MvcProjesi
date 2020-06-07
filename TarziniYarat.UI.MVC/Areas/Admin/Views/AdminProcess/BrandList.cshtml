@@ -21,6 +21,9 @@
             Güncelle
         </th>
         <th>
+            Aktif/Pasif
+        </th>
+        <th>
             Sil
         </th>
         <th>
@@ -30,30 +33,35 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName, new { @class = "btnName" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                <button href="#" class="btn btn-primary btnUpdate" dataID="@item.BrandID">
-                    Güncelle
-                </button>
-            </td>
-            <td>
-                <button href="#" class="btn btn-danger btnDelete" dataBrandID="@item.BrandID">
-                    Sil
-                </button>
-            </td>
-            <td>
-                @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.BrandID }, new { @class = "btn btn-success" })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CompanyName, new { @class = "btnName" })
+    </td>
+    <td>
+        @item.IsActive
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        <button href="#" class="btn btn-success btnUpdate" dataID="@item.BrandID">
+            Güncelle
+        </button>
+    </td>
+    <td>
+        <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.BrandID">
+            Aktif/Pasif
+        </button>
+    </td>
+    <td>
+        <button href="#"  class="btn btn-danger  btnDelete" dataBrandID="@item.BrandID">
+            Sil
+        </button>
+    </td>
+    <td>
+        @Html.ActionLink("Ürünlerine Git", "ProductList", new { brandID = item.BrandID }, new { @class = "btn btn-warning" })
+    </td>
+</tr>
     }
 
 </table>
@@ -84,6 +92,7 @@
 
     <script>
 
+        //Güncelleme
 
         $("#btnUpdateChange").click(function () {
             var brandId = $(this).attr("dataID");
@@ -109,6 +118,8 @@
             })
         })
 
+        //Güncellenecek verilerin gelmesi
+
         $(".btnUpdate").click(function () {
             var brandId = $(this).attr("dataID");
             $.ajax({
@@ -126,6 +137,33 @@
                 }
             })
         })
+
+        //Pasifleştirme
+
+        $(".btnActivate").click(function () {
+            var brandID = $(this).attr("data");
+            var brand = {
+                "IsActıve": $("#brandActive").val(),
+                "BrandID": brandID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/ActiveBrand/" + brandID,
+                data: brand,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
+        //Hard Silme
 
         $(".btnDelete").click(function () {
             var brandId = $(this).attr("dataBrandID");
