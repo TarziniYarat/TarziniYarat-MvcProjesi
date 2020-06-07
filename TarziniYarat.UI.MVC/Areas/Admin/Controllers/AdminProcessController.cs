@@ -95,7 +95,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         public JsonResult PersonUyeChange(int id)
         {
             Person person = _personService.GetByID(id);
-            if (person.RoleID==4)
+            if (person.RoleID == 4)
+            {
+                person.RoleID = 2;
+            }
+            else 
             {
                 person.RoleID = 2;
             }
@@ -107,6 +111,10 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         {
             Person person = _personService.GetByID(id);
             if (person.RoleID == 4)
+            {
+                person.RoleID = 3;
+            }
+            else 
             {
                 person.RoleID = 3;
             }

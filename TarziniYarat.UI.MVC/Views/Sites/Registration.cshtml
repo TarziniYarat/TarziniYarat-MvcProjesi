@@ -39,9 +39,7 @@
                     {
                         <h3>Yeni Hesap Oluştur</h3>
                         <br />
-                            <p class="alert-warning form-control">@(ViewBag.Hata == null ? "" : ViewBag.Hata )</p>
-                      
-                       <br />
+                            <p class="alert-warning form-control">@(ViewBag.Hata == null ? "" : ViewBag.Hata )</p>                       <br />
                         @*<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">*@
                         <div class="col-md-12 form-group">
                             @Html.TextBoxFor(a => a.TCKN, new { @class = "form-control", type = "number", placeholder = "T.C. Kimlik Numarası", required = "required", autofocus = "autofocus" })
@@ -60,24 +58,16 @@
                             @*<input type="date" class="form-control" id="BirthDate" name="BirthDate" placeholder="Doğum Tarihi" required>*@
                         </div>
                         <div class="col-md-12 form-group">
-                            @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", type = "email", placeholder = "Kullanıcı Adı", required = "required" })
+                            @Html.TextBoxFor(a => a.UserName, new { @class = "form-control", type = "email", placeholder = "Mail", required = "required" })
                             @*<input type="email" class="form-control" id="Username" name="Username" placeholder="Kullanıcı Adı" required>*@
                         </div>
                         <div class="col-md-12 form-group">
                             @Html.TextBoxFor(a => a.Password, new { @class = "form-control", type = "text", placeholder = "Şifre", required = "required" })
                             @*<input type="text" class="form-control" id="Password" name="Password" placeholder="Şifre" required>*@
                         </div>
-                        @*<div class="col-md-12 form-group">
-                <div class="creat_account">
-                    <input type="checkbox" id="f-option2" name="selector">
-                    <label for="f-option2">Beni Hatırla</label>
-                </div>
-            </div>*@
                         <div class="col-md-12 form-group">
                             @*@Html.ActionLink("Kayıt Ol","Registration",new { id=3 },new { @class= "btn submit_btn", type= "submit", value= "submit" })*@
                             <button class="btn btn-info form-control" type="submit">Kayıt Ol</button>
-                            @*<button type="submit" value="submit" class="btn submit_btn">Kayıt Ol</button>*@
-
                         </div>
                         <div class="col-md-12 form-group">
                             @Html.ActionLink("Zaten hesabınız var mı?", "Login")

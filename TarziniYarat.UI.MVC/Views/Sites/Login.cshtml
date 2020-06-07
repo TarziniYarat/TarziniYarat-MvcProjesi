@@ -42,10 +42,10 @@
                     <h3>
                         Siteye Girmek İçin Giriş Yapın
                     </h3>
-
+                    <p class="alert-warning form-control">@(ViewBag.Hata == null ? "" : ViewBag.Hata )</p>
                     <form class="row login_form" action="/Sites/Login" method="post" id="contactForm" novalidate="novalidate">
                         <div class="col-md-12 form-group">
-                            <input type="text" class="form-control" id="name" name="Username" placeholder="Kullanıcı Adı">
+                            <input type="text" class="form-control" id="name" name="Username" placeholder="Mail">
                         </div>
                         <div class="col-md-12 form-group">
                             <input type="text" class="form-control" id="name" name="Password" placeholder="Şifre">

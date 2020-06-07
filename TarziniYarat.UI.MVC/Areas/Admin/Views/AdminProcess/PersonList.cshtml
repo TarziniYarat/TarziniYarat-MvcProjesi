@@ -5,6 +5,8 @@
 }
 
 <h2>Kullanıcılar</h2>
+
+
 <br />
 <table class="table table-bordered table-striped">
     <thead>
@@ -21,37 +23,55 @@
         </tr>
         @foreach (TarziniYarat.Model.Person item in Model)
         {
-    <tr>
-        <td>@item.Name</td>
-        <td>@item.Surname</td>
-        <td>@item.Username</td>
-        <td>@item.IsActive</td>
-        <td>@item.RoleID</td>
-        <td>
-            <button href="#" name="personActive" class="btn btn-primary  btnActivate" data="@item.PersonID">
-                Aktif/Pasif
-            </button>
-        <td>
-            <button href="#" name="uyeChange" class="btn btn-primary  btnUyeChange" data="@item.PersonID">
-                Üye Yap
-            </button>
-        </td>
-        <td>
-            <button href="#" name="modelistChange" class="btn btn-primary  btnModelistChange" data="@item.PersonID">
-                Modelist Yap
-            </button>
-        </td>
-        <td>
-            <button href="#" class="btn btn-success btnUpdate" data="@item.PersonID">
-                Güncelle
-            </button>
-        </td>
-        <td>
-            <button href="#" class="btn btn-danger btnDelete" dataPersonID="@item.PersonID">
-                Sil
-            </button>
-        </td>
-    </tr>
+            if (item.RoleID == 1)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Username</td>
+                    <td>@item.IsActive</td>
+                    <td>@item.RoleID</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Username</td>
+                    <td>@item.IsActive</td>
+                    <td>@item.RoleID</td>
+                    <td>
+                        <button href="#" name="personActive" class="btn btn-primary  btnActivate" data="@item.PersonID">
+                            Aktif/Pasif
+                        </button>
+                    <td>
+                        <button href="#" name="uyeChange" class="btn btn-primary  btnUyeChange" data="@item.PersonID">
+                            Üye Yap
+                        </button>
+                    </td>
+                    <td>
+                        <button href="#" name="modelistChange" class="btn btn-primary  btnModelistChange" data="@item.PersonID">
+                            Modelist Yap
+                        </button>
+                    </td>
+                    <td>
+                        <button href="#" class="btn btn-success btnUpdate" data="@item.PersonID">
+                            Güncelle
+                        </button>
+                    </td>
+                    <td>
+                        <button href="#" class="btn btn-danger btnDelete" dataPersonID="@item.PersonID">
+                            Sil
+                        </button>
+                    </td>
+                </tr>
+            }
         }
     </thead>
 </table>

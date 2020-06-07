@@ -68,21 +68,25 @@ namespace TarziniYarat.UI.MVC.Controllers
             {
                 if (login.UserName == item.Username && login.Password == item.Password)
                 {
-                    if (item.RoleID == 1)
+                    if (login.UserName== "thelastdance@mail.com" && login.Password=="123456")
                     {
                         return RedirectToAction("Index", "Admin", new { area = "Admin", id = item.PersonID });
                     }
-                    else
+                    else if (item.RoleID==2 && item.IsActive==true)
                     {
-                        throw new Exception("admin değildir");
+                        return RedirectToAction("HomePage", "Sites", new { id = item.PersonID });
+                    }
+                    else if (item.RoleID==3 && item.IsActive==true)
+                    {
+                        return RedirectToAction("HomePage", "Sites"/*, new { id = item.PersonID }*/);
                     }
                 }
                 else
                 {
-                    throw new Exception("Kullanıcı adı veya şifre hatalı");
+                    continue;
                 }
-
             }
+            ViewBag.Hata = "Kullanıcı Bilgilerinizi Kontrol Ediniz.";
             return View();
         }
         public ActionResult Registration()
