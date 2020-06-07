@@ -13,43 +13,54 @@
             <th>Soyad</th>
             <th>Kullanıcı Adı</th>
             <th>Aktiflik</th>
-            <th>Aktifleştir/Pasifleştir</th>
-            <th>
-                Güncelle
-            </th>
-            <th>
-                Sil
-            </th>
+            <th>Kullanıcı Rolü</th>
+            <th>Aktif/Pasif</th>
+            <th colspan="2">Rolü Değiştir</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
         </tr>
         @foreach (TarziniYarat.Model.Person item in Model)
         {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.Surname</td>
-                <td>@item.Username</td>
-                <td>@item.IsActive</td>
-                <td>
-                    <button href="#" name="personActive" class="btn btn-primary  btnActivate" data="@item.PersonID">
-                        Aktifleştir/Pasifleştir
-                    </button>
-                </td>
-                <td>
-                    <button href="#" class="btn btn-success btnUpdate" data="@item.PersonID">
-                        Güncelle
-                    </button>
-                </td>
-                <td>
-                    <button href="#" class="btn btn-danger btnDelete" dataPersonID="@item.PersonID">
-                       Sil
-                    </button>
-                </td>
-            </tr>
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Surname</td>
+        <td>@item.Username</td>
+        <td>@item.IsActive</td>
+        <td>@item.RoleID</td>
+        <td>
+            <button href="#" name="personActive" class="btn btn-primary  btnActivate" data="@item.PersonID">
+                Aktif/Pasif
+            </button>
+        <td>
+            <button href="#" name="uyeChange" class="btn btn-primary  btnUyeChange" data="@item.PersonID">
+                Üye Yap
+            </button>
+        </td>
+        <td>
+            <button href="#" name="modelistChange" class="btn btn-primary  btnModelistChange" data="@item.PersonID">
+                Modelist Yap
+            </button>
+        </td>
+        <td>
+            <button href="#" class="btn btn-success btnUpdate" data="@item.PersonID">
+                Güncelle
+            </button>
+        </td>
+        <td>
+            <button href="#" class="btn btn-danger btnDelete" dataPersonID="@item.PersonID">
+                Sil
+            </button>
+        </td>
+    </tr>
         }
     </thead>
 </table>
 <br />
 @section scripts{
     <script>
+
+        // Aktif/Pasif Yapma
+
         $(".btnActivate").click(function () {
             var personID = $(this).attr("data");
             var person = {
@@ -72,6 +83,57 @@
                 }
             });
         });
+
+        //Rolü Değiştirme - Üye için
+
+        $(".btnUyeChange").click(function () {
+            var personID = $(this).attr("data");
+            var person = {
+                "RoleID": $("#uyeChange").val(),
+                "PersonID": personID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/PersonUyeChange/" + personID,
+                data: person,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
+         //Rolü Değiştirme - Modelist için
+
+        $(".btnModelistChange").click(function () {
+            var personID = $(this).attr("data");
+            var person = {
+                "RoleID": $("#modelistChange").val(),
+                "PersonID": personID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/PersonModelistChange/" + personID,
+                data: person,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
     </script>
 }
 

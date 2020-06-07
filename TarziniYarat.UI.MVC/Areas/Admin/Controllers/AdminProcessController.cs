@@ -90,7 +90,28 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
                 _personService.Update(person);
             }
             return Json("ok", JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult PersonUyeChange(int id)
+        {
+            Person person = _personService.GetByID(id);
+            if (person.RoleID==4)
+            {
+                person.RoleID = 2;
+            }
+            _personService.Update(person);
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult PersonModelistChange(int id)
+        {
+            Person person = _personService.GetByID(id);
+            if (person.RoleID == 4)
+            {
+                person.RoleID = 3;
+            }
+            _personService.Update(person);
+            return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult BrandList()
