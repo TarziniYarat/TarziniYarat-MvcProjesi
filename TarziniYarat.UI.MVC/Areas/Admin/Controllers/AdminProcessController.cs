@@ -75,27 +75,90 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(model);
         }
 
+
+        public ActionResult UpdateProduct(int id)
+        {
+            Product currentProduct = null;
+
+            if (id == null)
+            {
+                ViewBag.Check = false;
+            }
+            else
+            {
+
+                currentProduct = _productService.GetByID(id);
+                if (currentProduct != null)
+                {
+                    GetAllCategoriesToDLL();
+                    GetAllBrandsToDLL();
+                    GetBodyFromEnumToDLL();
+                    GetColorFromEnumToDLL();
+                    return View(currentProduct);
+                }
+                else
+                {
+                    ViewBag.Check = true;
+                }
+            }
+
+            return View();
+        }
+
         [HttpPost]
-        public JsonResult UpdateProduct(Product p)
+        public ActionResult UpdateProduct(Product p)
+        {
+            Product product = _productService.GetByID(p.ProductID);
+            product.ProductName = p.ProductName;
+            product.ProductTitle = p.ProductTitle;
+            product.UnitPrice = p.UnitPrice;
+            product.UnitsInStock = p.UnitsInStock;
+            product.Description = p.Description;
+            product.Color = p.Color;
+            product.BodySize = p.BodySize;
+            product.CategoryID = p.CategoryID;
+            product.BrandID = p.BrandID;
+
+            _productService.Update(product);
+            ViewBag.Check = false;
+            return RedirectToAction("ProductList");
+        }
+
+
+        [HttpPost]
+        public JsonResult ActivateProduct(int productID)
+        {
+            Product product = _productService.GetByID(productID);
+            if (product.IsActive == true)
+            {
+                product.IsActive = false;
+                _productService.Update(product);
+            }
+            else
+            {
+                product.IsActive = true;
+                _productService.Update(product);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        [HttpPost]
+        public JsonResult DeleteProduct(int id)
         {
             try
             {
-                Product product = _productService.GetByID(p.ProductID);
-                product.ProductName = p.ProductName;
-                product.ProductTitle = p.ProductTitle;
-                product.UnitsInStock = p.UnitsInStock;
-                product.Description = p.Description;
-                product.Color = p.Color;
-                product.BodySize = p.BodySize;
-                _productService.Update(product);
+                _productService.Delete(id);
             }
             catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
             return Json("ok", JsonRequestBehavior.AllowGet);
-
         }
+
+     
 
         public JsonResult UpdateStok(Product p)
         {

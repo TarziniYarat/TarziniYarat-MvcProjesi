@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<TarziniYarat.Model.Product>
 
-@{
-    ViewBag.Title = "ProductList";
-    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
-}
+@{ ViewBag.Title = "ProductList";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml"; }
 
 
 <h2>Ürün Listesi</h2>
@@ -53,59 +51,59 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductTitle, new { @class = "btnName" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductTitle, new { @class = "btnName" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description, new { @class = "btnName" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description, new { @class = "btnName" })
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Color, new { @class = "btnName" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Color, new { @class = "btnName" })
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodySize, new { @class = "btnName" })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BodySize, new { @class = "btnName" })
 
-            </td>
+    </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInStock, new { @class = "btnName" })
+    <td>
+        @Html.DisplayFor(modelItem => item.UnitsInStock, new { @class = "btnName" })
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CreatedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IsActive)
+    </td>
 
-            <td>
-                <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
-                    Güncelle
-                </button>
-            </td>
-            <td>
-                <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.ProductID">
-                    Aktif/Pasif
-                </button>
-            </td>
-            <td>
-                <button href="#" class="btn btn-danger  btnDelete" dataBrandID="@item.ProductID">
-                    Sil
-                </button>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
+    <td>
 
-            </td>
-        </tr>
-    }
+        @Html.ActionLink("Güncelle", "UpdateProduct", new { id = item.ProductID }, new { @class = "btn btn-success" })
+
+    </td>
+    <td>
+        <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.ProductID">
+            Aktif/Pasif
+        </button>
+    </td>
+    <td>
+        <button href="#" class="btn btn-danger  btnDelete" dataproductID="@item.ProductID">
+            Sil
+        </button>
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
+
+    </td>
+</tr>
+}
 
 </table>
 
@@ -115,3 +113,53 @@
 @Html.ActionLink("Ürün Ekleme Sayfasına Git", "CreateProduct")
 
 
+@section scripts{
+
+    <script>
+        $(".btnActivate").click(function () {
+            var productID = $(this).attr("data");
+            var product = {
+                "IsActıve": $("#brandActive").val(),
+                "ProductID": productID,
+            }
+            $.ajax({
+                type: "POST",
+                url: "/AdminProcess/ActivateProduct/" + productID,
+                data: product,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Başarıyla değiştirildi");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("İşlemde bir hata oluştu.");
+                        console.log(err);
+                    }
+                }
+            });
+        });
+
+        //Hard Silme
+
+        $(".btnDelete").click(function () {
+            var productID = $(this).attr("dataproductID");
+            $.ajax({
+                url: "/AdminProcess/DeleteProduct/" + productID,
+                type: "POST",
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Silme İşlemi Başarılı");
+                        window.location.reload();
+                    }
+                },
+                error: function (err) {
+                    alert("Hata Oluştu.");
+                    console.log(err);
+                }
+            });
+        })</script>
+
+
+
+
+}
