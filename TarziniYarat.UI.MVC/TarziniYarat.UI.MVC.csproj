@@ -126,7 +126,6 @@
     <Content Include="Areas\Admin\Content\yedek\css\all.min.css" />
     <Content Include="Areas\Admin\Content\yedek\css\sb-admin-2.css" />
     <Content Include="Areas\Admin\Content\yedek\css\sb-admin-2.min.css" />
-    <Content Include="Areas\Admin\Content\yedek\img\undraw_posting_photo.svg" />
     <Content Include="Areas\Admin\Content\yedek\js\demo\chart-area-demo.js" />
     <Content Include="Areas\Admin\Content\yedek\js\demo\chart-bar-demo.js" />
     <Content Include="Areas\Admin\Content\yedek\js\demo\chart-pie-demo.js" />
