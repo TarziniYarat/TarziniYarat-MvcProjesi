@@ -68,7 +68,7 @@
         </button>
     </td>
     <td>
-        @Html.ActionLink("Siparişlere Git", "OrderList", new { brandID = item.ShipperID }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Kargolanacak Ürünlere Git", "ShipperProduct","MembersOrder", new { id = item.ShipperID }, new { @class = "btn btn-warning" })
     </td>
 </tr>
     }
@@ -96,7 +96,7 @@
     </div>
 </div>
 <br />
-@Html.ActionLink("KArgo Şirketi Ekleme Sayfasına Git", "AddShipper")
+@Html.ActionLink("Kargo Şirketi Ekleme Sayfasına Git", "AddShipper")
 
 @section scripts{
 
