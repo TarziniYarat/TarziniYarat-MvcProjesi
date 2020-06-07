@@ -288,8 +288,16 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         public JsonResult ActivateCategory(int categoryID)
         {
             Category category = _categoryService.GetByID(categoryID);
-            category.IsActive = true;
+            if (category.IsActive == true)
+            {
+                category.IsActive = false;
+            }
+            else
+            {
+                category.IsActive = true;
+            }
             _categoryService.Update(category);
+
             return Json("ok", JsonRequestBehavior.AllowGet);
 
         }
