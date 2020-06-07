@@ -74,11 +74,11 @@ namespace TarziniYarat.UI.MVC.Controllers
                     }
                     else if (item.RoleID==2 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites", new { id = item.PersonID });
+                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
                     }
                     else if (item.RoleID==3 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites"/*, new { id = item.PersonID }*/);
+                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
                     }
                 }
                 else

@@ -2047,6 +2047,7 @@
     <Compile Include="Areas\Admin\Controllers\MembersOrderController.cs" />
     <Compile Include="Areas\Admin\ViewModels\ShipperProductVM.cs" />
     <Compile Include="Controllers\SitesController.cs" />
+    <Compile Include="Filtres\CustomAuthorize.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
