@@ -5,102 +5,37 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>AddProduct</h2>
 
-@using (Html.BeginForm()) 
+<h2>Ürün Ekle</h2>
+<br />
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Product</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.Label("Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.CategoryID, (IEnumerable<SelectListItem>)ViewBag.Categories, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.Label("Marka", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(model => model.BrandID, (IEnumerable<SelectListItem>)ViewBag.Brands, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Brand, "", new { @class = "text-danger" })
-        </div>
+    <div class="col-md-12 form-group">
+        @Html.TextBoxFor(a => a.ProductName, new { @class = "form-control", type = "text", placeholder = "Ürün adı giriniz", required = "required", autofocus = "autofocus" })
     </div>
 
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.IsActive)
-                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-            </div>
+    @*<div class="col-md-12 form-group">
+            @Html.EditorFor(a => a.Category.CategoryName, new { @class = "form-control", type = "text", placeholder = "Ürünün kategorisini giriniz", required = "required" })
         </div>*@
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
-        </div>
+    <div class="col-md-12 form-group">
+        @Html.TextBoxFor(a => a.Description, new { @class = "form-control", type = "text", placeholder = "Açıklama giriniz", required = "required" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
+    <div class="col-md-12 form-group">
+        @Html.TextBoxFor(a => a.Brand.CompanyName, new { @class = "form-control", type = "text", placeholder = "Marka giriniz", required = "required" })
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ProductTitle, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ProductTitle, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ProductTitle, "", new { @class = "text-danger" })
-        </div>
+    @* TODO Fotoğraf*@
+    <div class="col-md-12 form-group">
+        @Html.TextBoxFor(a => a.Photo, new { @class = "form-control", type = "text", placeholder = "Fotoğraf Yükleyiniz giriniz", required = "required" })
     </div>
-
-    <div class="form-group">
-        <div class="form-group">
-            @Html.Label("Beden", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.BodySize, (IEnumerable<SelectListItem>)ViewBag.Bodies, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.BodySize, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <div class="col-md-12 form-group">
+        @Html.TextBoxFor(a => a.Photo, new { @class = "form-control", type = "text", placeholder = "Fotoğraf Yükleyiniz giriniz", required = "required" })
     </div>
+    <div class="col-md-12 form-group">
+        <button class="btn btn-info form-control" type="submit">Kaydet</button>
 
-
-    <div class="form-group">
-        <div class="form-group">
-            @Html.Label("Renkler", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.Color, (IEnumerable<SelectListItem>)ViewBag.Color, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Color, "", new { @class = "text-danger" })
-            </div>
-        </div>
     </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Ürün Ekle" class="btn btn-default" />
-        </div>
+    <div>
+        @Html.ActionLink("Kategori Listesine Git", "CategoryList")
     </div>
-</div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "ProductList")
-</div>
+<br />

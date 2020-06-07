@@ -200,6 +200,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
             return View(categoryList);
         }
+
         public JsonResult ActivateCategory(int categoryID)
         {
             Category category = _categoryService.GetByID(categoryID);
@@ -281,21 +282,91 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         //    }
         //}
 
-        public JsonResult DeleteCategory()
+        public JsonResult DeleteCategory(int id)
         {
-            return Json(JsonRequestBehavior.AllowGet);
+            try
+            {
+                _categoryService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
 
+        }
+
+        public ActionResult AddShipper()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddShipper(Shipper model)
+        {
+            if (ModelState.IsValid)
+            {
+                Shipper shipper = new Shipper();
+                shipper.CompanyName = model.CompanyName;
+                shipper.Phone = model.Phone;
+                try
+                {
+                    _shipperService.Add(shipper);
+                    return RedirectToAction("shipperList");
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Girdiğiniz bilgileri kontrol ediniz");
+            }
+            return View();
         }
 
         public ActionResult ShipperList()
         {
-            List<Shipper> shippers = _shipperService.GetAll();
-            return View(shippers);
+            return View(_brandService.GetAll());
         }
 
-        public JsonResult DeleteShipper(int shipperID)
+        [HttpPost]
+        public JsonResult UpdateShipper(Shipper model)
         {
-            _shipperService.Delete(shipperID);
+            try
+            {
+                Shipper shipper = _shipperService.GetByID(model.ShipperID);
+                shipper.CompanyName = model.CompanyName;
+                shipper.Phone = model.Phone;
+                _shipperService.Update(shipper);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult GetShipper(int id)
+        {
+            Shipper shipper = _shipperService.GetByID(id);
+
+            return Json(shipper, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteShipper(int id)
+        {
+            try
+            {
+                _shipperService.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 

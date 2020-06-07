@@ -17,6 +17,7 @@ namespace TarziniYarat.Model
         public int ProductID { get; set; }
         public int CategoryID { get; set; }
         public int BrandID { get; set; }
+        public string ProductName { get; set; }
         public string Photo { get; set; }
         public string Description { get; set; }
         public int UnitsInStock { get; set; }

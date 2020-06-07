@@ -1,4 +1,4 @@
-﻿@model List<TarziniYarat.Model.Shipper>
+﻿@model IEnumerable<TarziniYarat.Model.Shipper>
 
 @{
     ViewBag.Title = "ShipperList";
@@ -7,42 +7,155 @@
 
 
 <h2>Kargo Şirketleri</h2>
-<button class="btn btn-success">Yeni Kargo Şirketi Ekle</button>
 <br />
-<hr />
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Şirket Adı</th>
-            <th>Telefon Numarası</th>
-            <th>Sil</th>
-        </tr>
-        @foreach (TarziniYarat.Model.Shipper item in Model)
-        {
-            <tr>
-                <td>@item.CompanyName</td>
-                <td>@item.Phone</td>
-                <td><button class="btn btn-danger btnDelete" data-shipperID="@item.ShipperID">Sil</button></td>
-            </tr>
-}
-    </thead>
-</table>
-@section scripts{
-    <script>
-    $(".btnDelete").click(function () {
-            var shipperID = $(this).attr("data-shipperID");
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            Güncelle
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Siparişlere Git
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                <button href="#" class="btn btn-primary btnUpdate" dataID="@item.ShipperID">
+                    Güncelle
+                </button>
+            </td>
+            <td>
+                <button href="#" class="btn btn-danger btnDelete" dataShipperID="@item.ShipperID">
+                    Sil
+                </button>
+            </td>
+            <td>
+                @Html.ActionLink("Siparişlere Git", "OrderList", new { brandID = item.ShipperID }, new { @class = "btn btn-success" })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<div>
+    <h4>Kargo Şirketi Bilgilerini Düzenle</h4>
+</div>
+<div>
+    <form id="UpdateShipper">
+
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="text" name="companyName" id="companyName" placeholder="Şirket Adını Giriniz." />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="number" name="phone" id="phone" placeholder="Telefon Numarası Giriniz." />
+            </div>
+        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
+    </div>
+</div>
+<br />
+@Html.ActionLink("KArgo Şirketi Ekleme Sayfasına Git", "AddShipper")
+
+@section scripts{
+
+    <script>
+
+
+        $("#btnUpdateChange").click(function () {
+            var shipperID = $(this).attr("dataID");
+            var shipper = {
+                "CompanyName": $("#companyName").val(),
+                "Phone": $("#phone").val(),
+                "ShipperID": shipperID,
+            }
             $.ajax({
-                type: "GET",
+                url: "/AdminProcess/UpdateShipper/",
+                type: "POST",
+                data: shipper,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Güncelleme Başarılı")
+                        window.location.reload();
+                    }
+
+                },
+                onerror: function (err) {
+                    alert("İstek başarısız.")
+                    console.log(err);
+                }
+            })
+        })
+
+        $(".btnUpdate").click(function () {
+            var shipperID = $(this).attr("dataID");
+            $.ajax({
+                url: "/AdminProcess/GetShipper/" + shipperID,
+                type: "POST",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#companyName").val(resp.CompanyName);
+                        $("#phone").val(resp.Phone);
+                        $("#btnUpdateChange").attr("dataID", shipperID);
+                    }
+                },
+                onerror: function (err) {
+                    alert("Hata Oluştu.")
+                    console.log(err);
+                }
+            })
+        })
+
+        $(".btnDelete").click(function () {
+            var shipperID = $(this).attr("dataShipperID");
+            $.ajax({
                 url: "/AdminProcess/DeleteShipper/" + shipperID,
+                type: "POST",
                 success: function (data) {
                     if (data == "ok") {
-                        alert("Başarıyla silindi");
+                        alert("Silme İşlemi Başarılı");
+                        window.location.reload();
                     }
-                    else {
-                        alert("Silmede bir hata oluştu.");
-                    }
+                },
+                error: function (err) {
+                    alert("Hata Oluştu.");
+                    console.log(err);
                 }
             });
-        });</script>
+        })
+    </script>
+
 }
