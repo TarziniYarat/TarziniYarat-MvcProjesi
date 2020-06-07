@@ -1,8 +1,115 @@
-﻿
+﻿@model IEnumerable<TarziniYarat.Model.Product>
+
 @{
     ViewBag.Title = "ProductList";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>ProductList</h2>
+
+<h2>Ürün Listesi</h2>
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BodySize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            Güncelle
+        </th>
+        <th>
+            Aktif/Pasif
+        </th>
+        <th>
+            Sil
+        </th>
+        <th>
+            Ürünlere Git
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductTitle, new { @class = "btnName" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BodySize, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock, new { @class = "btnName" })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
+                    Güncelle
+                </button>
+            </td>
+            <td>
+                <button href="#" name="brandActive" class="btn btn-primary  btnActivate" data="@item.ProductID">
+                    Aktif/Pasif
+                </button>
+            </td>
+            <td>
+                <button href="#" class="btn btn-danger  btnDelete" dataBrandID="@item.ProductID">
+                    Sil
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+<hr />
+@Html.ActionLink("Ürün Ekleme Sayfasına Git", "CreateProduct")
+
 

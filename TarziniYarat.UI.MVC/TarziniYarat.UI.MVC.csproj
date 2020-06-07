@@ -2288,6 +2288,7 @@
     <Content Include="Areas\Admin\Views\AdminProcess\AddBrand.cshtml" />
     <Content Include="Areas\Admin\Views\AdminProcess\AddShipper.cshtml" />
     <Content Include="Areas\Admin\Views\MembersOrder\ShipperProduct.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminProcess\CreateProduct.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutSites.cshtml" />
     <Content Include="Views\Sites\HomePage.cshtml" />

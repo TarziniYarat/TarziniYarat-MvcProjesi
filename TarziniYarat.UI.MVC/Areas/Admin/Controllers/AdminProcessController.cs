@@ -28,7 +28,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         //while creating a new product,we need to add product's brand which was created before.
         public ActionResult ProductList()
         {
-            return View();
+            return View(_productService.GetAll());
         }
 
         public JsonResult DeleteProduct()
@@ -38,19 +38,12 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
         public ActionResult AddProduct()
         {
-            GetBodyFromEnum();
-            GetColorFromEnum();
-            GetAllBrands();
-            GetAllCategories();
+          
             return View();
         }
 
         public ActionResult AddProduct(Product p)
-        {
-            GetBodyFromEnum();
-            GetColorFromEnum();
-            GetAllBrands();
-            GetAllCategories();
+        {           
 
             if (p.Description != null && p.ProductTitle != null) //buraya bak
             {
@@ -58,6 +51,44 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return View();
         }
+
+
+        public ActionResult CreateProduct()
+        {
+            GetAllCategoriesToDLL();
+            GetAllBrandsToDLL();
+            GetBodyFromEnumToDLL();
+            GetColorFromEnumToDLL();
+            Product model = new Product();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult CreateProduct(Product model, HttpPostedFileBase image1)
+        {
+            try
+            {
+                if (image1 != null)
+                {
+                    model.Photo = new byte[image1.ContentLength];
+                    image1.InputStream.Read(model.Photo, 0, image1.ContentLength);
+                }
+                _productService.Add(model);
+                ViewBag.IsSuccess = true;
+            }
+            catch (Exception)
+            {
+
+                ViewBag.IsSuccess = false;
+            }
+            
+          
+            GetAllCategoriesToDLL();
+            GetAllBrandsToDLL();
+            GetBodyFromEnumToDLL();
+            GetColorFromEnumToDLL();
+            return View(model);
+        }
+
 
         public JsonResult DeletePerson()
         {
@@ -178,7 +209,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-        private void GetAllBrands()
+        private void GetAllBrandsToDLL()
         {
             List<SelectListItem> brands = new List<SelectListItem>();
             foreach (Brand item in _brandService.GetAll())
@@ -206,7 +237,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
 
         // TODO: Body enumı alınıp ViewBag e aktarıldı.
-        private void GetBodyFromEnum()
+        private void GetBodyFromEnumToDLL()
         {
             string[] bodyEnums = Enum.GetNames(typeof(Size));
             List<SelectListItem> body = new List<SelectListItem>();
@@ -218,7 +249,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
 
         // TODO: Color enumı alınıp ViewBag e aktarıldı.
-        private void GetColorFromEnum()
+        private void GetColorFromEnumToDLL()
         {
             string[] colorEnums = Enum.GetNames(typeof(Color));
             List<SelectListItem> color = new List<SelectListItem>();
@@ -229,7 +260,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             ViewBag.Color = color;
         }
 
-        private void GetAllCategories()
+        private void GetAllCategoriesToDLL()
         {
             List<SelectListItem> categories = new List<SelectListItem>();
             foreach (Category item in _categoryService.GetAll())
