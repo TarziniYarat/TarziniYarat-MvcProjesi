@@ -328,7 +328,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
         public ActionResult ShipperList()
         {
-            return View(_brandService.GetAll());
+            return View(_shipperService.GetAll());
         }
 
         [HttpPost]
