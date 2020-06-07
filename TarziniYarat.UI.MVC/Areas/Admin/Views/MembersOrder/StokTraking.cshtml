@@ -1,8 +1,159 @@
-﻿
+﻿@model IEnumerable<TarziniYarat.Model.Product>
+
 @{
     ViewBag.Title = "StokTraking";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>StokTraking</h2>
+<h2>Stok Listesi</h2>
 
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitsInStock)
+        </th>
+        <th>
+            Güncelle
+        </th>
+
+        <th>
+            Sil
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName, new { @class = "btnName" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitsInStock)
+            </td>
+            <td>
+                <button href="#" class="btn btn-success btnUpdate" dataID="@item.ProductID">
+                    Güncelle
+                </button>
+            </td>
+            <td>
+                <button href="#" class="btn btn-danger  btnDelete" dataProductID="@item.ProductID">
+                    Sil
+                </button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<br />
+<hr />
+
+<div>
+    <h4>Stok Düzenle</h4>
+</div>
+<div>
+    <form id="UpdateBrand">
+
+        <div class="form-group">
+            <div class="input-group">
+                <input class="form-control" type="text" name="productName" id="productName" placeholder="Ürün Adını Giriniz." />
+            </div><br />
+            <div class="input-group">
+                <input class="form-control" type="text" name="stokName" id="stokName" placeholder="Stok Miktarı Giriniz." />
+            </div>
+        </div>
+    </form>
+    <div class="form-group">
+        <button class="btn btn-success form-control" id="btnUpdateChange" type="submit">Değişiklikleri Kaydet</button>
+    </div>
+</div>
+<br />
+@Html.ActionLink("Ürün Ekleme Sayfasına Git", "CreateProduct")
+
+@section scripts{
+
+    <script>
+
+        //Güncelleme
+
+        $("#btnUpdateChange").click(function () {
+            var productID = $(this).attr("dataID");
+            var brand = {
+                "ProductName": $("#productName").val(),
+                "UnitsInStok": $("#stokName").val(),
+                "ProductID": productID,
+            }
+            $.ajax({
+                url: "/AdminProcess/UpdateProduct/",
+                type: "POST",
+                data: brand,
+                success: function (resp) {
+                    if (resp == "ok") {
+                        alert("Güncelleme Başarılı")
+                        window.location.reload();
+                    }
+
+                },
+                onerror: function (err) {
+                    alert("İstek başarısız.")
+                    console.log(err);
+                }
+            })
+        })
+
+        //Güncellenecek verilerin gelmesi
+
+        $(".btnUpdate").click(function () {
+            var productID = $(this).attr("dataID");
+            $.ajax({
+                url: "/AdminProcess/GetProduct/" + productID,
+                type: "POST",
+                success: function (resp) {
+                    if (resp != null) {
+                        $("#productName").val(resp.ProductName);
+                        $("#stokName").val(resp.UnitsInStok);
+                        $("#btnUpdateChange").attr("dataID", productID);
+                    }
+                },
+                onerror: function (err) {
+                    alert("Hata Oluştu.")
+                    console.log(err);
+                }
+            })
+        })
+
+      
+
+        //Hard Silme
+
+        $(".btnDelete").click(function () {
+            var productID = $(this).attr("dataProductID");
+            $.ajax({
+                url: "/AdminProcess/DeleteProduct/" + productID,
+                type: "POST",
+                success: function (data) {
+                    if (data == "ok") {
+                        alert("Silme İşlemi Başarılı");
+                        window.location.reload();
+                    }
+                },
+                error: function (err) {
+                    alert("Hata Oluştu.");
+                    console.log(err);
+                }
+            });
+        })
+    </script>
+
+}

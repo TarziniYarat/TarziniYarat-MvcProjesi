@@ -21,7 +21,8 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
         }
         public ActionResult StokTraking()
         {
-            return View();
+            
+            return View(_productService.GetAll());
         }
 
         public ActionResult ShipperProduct(int? id)

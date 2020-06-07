@@ -36,23 +36,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json(JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddProduct()
-        {
-          
-            return View();
-        }
-
-        public ActionResult AddProduct(Product p)
-        {           
-
-            if (p.Description != null && p.ProductTitle != null) //buraya bak
-            {
-                _productService.Add(p);
-            }
-            return View();
-        }
-
-
         public ActionResult CreateProduct()
         {
             GetAllCategoriesToDLL();
@@ -62,6 +45,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             Product model = new Product();
             return View(model);
         }
+
         [HttpPost]
         public ActionResult CreateProduct(Product model, HttpPostedFileBase image1)
         {
@@ -89,7 +73,35 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public JsonResult UpdateProduct(Product p)
+        {
+            try
+            {
+                Product product = _productService.GetByID(p.ProductID);
+                product.ProductName = p.ProductName;
+                product.ProductTitle = p.ProductTitle;
+                product.UnitsInStock = p.UnitsInStock;
+                product.Description = p.Description;
+                product.Color = p.Color;
+                product.BodySize = p.BodySize;
+                _productService.Update(product);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return Json("ok", JsonRequestBehavior.AllowGet);
 
+        }
+        [HttpPost]
+        public JsonResult GetProduct(int id)
+        {
+            Product product = _productService.GetByID(id);
+
+            return Json(product, JsonRequestBehavior.AllowGet);
+
+        }
         public JsonResult DeletePerson()
         {
             return Json(JsonRequestBehavior.AllowGet);
