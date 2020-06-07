@@ -7,7 +7,7 @@ using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+    
     public class AdminController : Controller
     {
         // GET: Admin/Admin

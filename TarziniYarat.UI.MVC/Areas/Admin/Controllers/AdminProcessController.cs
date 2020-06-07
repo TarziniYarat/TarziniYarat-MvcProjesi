@@ -9,7 +9,7 @@ using TarziniYarat.UI.MVC.Filtres;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-    [CustomAuthorize(Roles = "Admin")]
+   
     public class AdminProcessController : Controller
     {
         IProductService _productService;
@@ -188,10 +188,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(personList);
         }
 
-        public JsonResult AddPerson()
-        {
-            return Json(JsonRequestBehavior.AllowGet);
-        }
+       
 
         public JsonResult ActivatePerson(int personID)
         {
