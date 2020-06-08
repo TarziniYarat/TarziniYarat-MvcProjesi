@@ -63,6 +63,24 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Category = category;
             return View(models);
         } 
+
+        [HttpPost]
+        public ActionResult Shop(int catID)
+        {
+            List<HomeProductViewModel> models = new List<HomeProductViewModel>();
+            foreach (Product item in _productService.GetAllByCategory(catID))
+            {
+                models.Add(new HomeProductViewModel()
+                {
+                    Photo = item.Photo,
+                    UnitPrice = item.UnitPrice,
+                    ProductName = item.ProductName
+                });
+            }
+            return View(models);
+
+
+        }
         public ActionResult ProductDetail()
         {
             return View();

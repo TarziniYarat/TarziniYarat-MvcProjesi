@@ -28,13 +28,11 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             _shipperService = shipperService;
         }
 
-
         //while creating a new product,we need to add product's brand which was created before.
         public ActionResult ProductList()
         {
             return View(_productService.GetAll());
         }
-
 
         public ActionResult CreateProduct()
         {
@@ -121,7 +119,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return RedirectToAction("ProductList");
         }
 
-
         [HttpPost]
         public JsonResult ActivateProduct(int productID)
         {
@@ -139,8 +136,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-
-
         [HttpPost]
         public JsonResult DeleteProduct(int id)
         {
@@ -154,8 +149,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             }
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
-
-
 
         public JsonResult UpdateStok(Product p)
         {
@@ -184,8 +177,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
             return View(personList);
         }
-
-
 
         public JsonResult ActivatePerson(int personID)
         {

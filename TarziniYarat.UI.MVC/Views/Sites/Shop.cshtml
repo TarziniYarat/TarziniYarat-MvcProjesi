@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_LayoutSites.cshtml";
 }
 
-
-<body>
+@using (Html.BeginForm("Shop", "Sites", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
     <!--================Home Banner Area =================-->
 
     <section class="banner_area">
@@ -40,7 +40,7 @@
                                         @foreach (TarziniYarat.Model.Category item in ViewBag.Category)
                                         {
                                             <li>
-                                                <a href="#">@item.CategoryName</a>
+                                                @Html.ActionLink(item.CategoryName, "Shop", new { catID = item.CategoryID })
                                             </li>
                                         }
                                     </ul>
@@ -104,26 +104,26 @@
             </div>
         </div>
         @*<div class="row flex-row-reverse">
-            <div class="col-lg-9">
-                <div class="product_top_bar">
-                    <div class="left_dorp">
-                        <select class="sorting">
-                            <option value="1">Default sorting</option>
-                            <option value="2">Default sorting 01</option>
-                            <option value="4">Default sorting 02</option>
-                        </select>
-                        <select class="show">
-                            <option value="1">Show 12</option>
-                            <option value="2">Show 14</option>
-                            <option value="4">Show 16</option>
-                        </select>
+                <div class="col-lg-9">
+                    <div class="product_top_bar">
+                        <div class="left_dorp">
+                            <select class="sorting">
+                                <option value="1">Default sorting</option>
+                                <option value="2">Default sorting 01</option>
+                                <option value="4">Default sorting 02</option>
+                            </select>
+                            <select class="show">
+                                <option value="1">Show 12</option>
+                                <option value="2">Show 14</option>
+                                <option value="4">Show 16</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>*@
+            </div>*@
 
         <div class="latest_product_inner row">
-            @foreach(HomeProductViewModel item in Model)
+            @foreach (HomeProductViewModel item in Model)
             {
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="f_p_item">
@@ -144,7 +144,7 @@
         </div>
 
         @*</div>
-        </div>*@
+            </div>*@
 
         <div class="row">
             <nav class="cat_page mx-auto" aria-label="Page navigation example">
@@ -178,7 +178,9 @@
             </nav>
         </div>
         @*</div>
-        </div>*@
+            </div>*@
     </section>
     <!--================End Category Product Area =================-->
-</body>
+}
+
+
