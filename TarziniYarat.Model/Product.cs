@@ -20,6 +20,7 @@ namespace TarziniYarat.Model
         public int? ShipperID { get; set; }
         public string ProductName { get; set; }
         public byte[] Photo { get; set; }
+        public string PhotoPath { get; set; }
         public string Description { get; set; }
         public decimal UnitPrice { get; set; }
         public int UnitsInStock { get; set; }

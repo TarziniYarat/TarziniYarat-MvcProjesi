@@ -14,18 +14,42 @@ namespace TarziniYarat.UI.MVC.Controllers
     {
         IPersonService _personService;
         IRoleService _roleService;
-
-        public SitesController(IPersonService personService, IRoleService roleService)
+        IProductService _productService;
+        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService)
         {
             _personService = personService;
             _roleService = roleService;
+            _productService = productService;
         }
         public ActionResult HomePage()
         {
+            List<Product> models = new List<Product>();
+            foreach (Product item in _productService.GetAll())
+            {
+                models.Add(new Product()
+                {
+                    Photo = item.Photo,
+                    UnitPrice = item.UnitPrice,
+                    ProductName = item.ProductName,
+                    PhotoPath=item.PhotoPath
+                });
+            }
+            ViewBag.Product = models;
             return View();
         }
-        public ActionResult Home(int? personID)
+        public ActionResult Home(int? personID, Product model)
         {
+            List<Product> models = new List<Product>();
+            foreach (Product item in _productService.GetAll())
+            {
+                models.Add(new Product()
+                {
+                    Photo = item.Photo,
+                    UnitPrice = item.UnitPrice,
+                    ProductName = item.ProductName
+                });
+            }
+            ViewBag.Product = models;
             return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
         public ActionResult Shop()
