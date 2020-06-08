@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
@@ -10,8 +12,10 @@ using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
+    
     public class SitesController : Controller
     {
+        
         IPersonService _personService;
         IRoleService _roleService;
         IProductService _productService;
@@ -21,21 +25,30 @@ namespace TarziniYarat.UI.MVC.Controllers
             _roleService = roleService;
             _productService = productService;
         }
+        //public ActionResult HomePage()
+        //{
+        //    List<Product> models = new List<Product>();
+        //    foreach (Product item in _productService.GetAll())
+        //    {
+
+        //        models.Add(new Product()
+        //        {
+        //            Photo = item.Photo,
+        //            UnitPrice = item.UnitPrice,
+        //            ProductName = item.ProductName,
+        //            PhotoPath=item.PhotoPath
+
+        //        });
+        //    }
+
+
+        //    ViewBag.Product = models;
+        //    return View(models);
+        //}
+
         public ActionResult HomePage()
         {
-            List<Product> models = new List<Product>();
-            foreach (Product item in _productService.GetAll())
-            {
-                models.Add(new Product()
-                {
-                    Photo = item.Photo,
-                    UnitPrice = item.UnitPrice,
-                    ProductName = item.ProductName,
-                    PhotoPath=item.PhotoPath
-                });
-            }
-            ViewBag.Product = models;
-            return View();
+            return View(_productService.GetAll());
         }
         public ActionResult Home(int? personID, Product model)
         {

@@ -60,11 +60,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
                 }
                 _productService.Add(model);
                 ViewBag.IsSuccess = true;
-
-                //string ResimAd = System.IO.Path.GetFileName(image1.FileName);
-                //string adres = Server.MapPath("~/image/" + ResimAd);
-                //image1.SaveAs(adres);
-                //model.PhotoPath = ResimAd;
             }
             catch (Exception)
             {
