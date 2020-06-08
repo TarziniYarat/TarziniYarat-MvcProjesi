@@ -95,39 +95,153 @@
 </section>
 <!--================End Clients Logo Area =================-->
 <!--================Feature Product Area =================-->
-<section class="feature_product_area section_gap">
+@*<section class="feature_product_area section_gap">
     <div class="main_box">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="main_title">
-                    <h2>
-                        Özel Ürünler
-                    </h2>
-                    <p>
-                        Çevre dostu sisteme son derece aşık olanlar.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col col1">
-                    @foreach (var item in Model)
-                    {
-                        <div class="f_p_item">
-                            <div class="f_p_img">
-                            @{ 
-                                var base64 = Convert.ToBase64String(item.Photo);
-                                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-                            }
-                                <img class="img-fluid"  src="@imgsrc"/>
-                            </div>
-                            <a href="#">
-                                <h4>@item.ProductName</h4>
-                            </a>
-                            <h5>@item.UnitPrice</h5>
-                        </div>
-                    }
+        <div class="container-fluid">*@
+
+<section class="cat_product_area section_gap">
+    <div class="container-fluid">
+        <div class="row flex-row-reverse">
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="main_title">
+                        <h2>
+                            Özel Ürünler
+                        </h2>
+                        <p>
+                            Çevre dostu sisteme son derece aşık olanlar.
+                        </p>
                     </div>
                 </div>
+                <div class="latest_product_inner row">
+                    @foreach (TarziniYarat.Model.Product item in Model)
+                    {
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="f_p_item">
+                                <div class="f_p_img">
+                                    @{
+                                        var base65 = Convert.ToBase64String(item.Photo);
+                                        var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                    }
+                                    <img class="img-fluid" src="@img2" style="max-height:200px;max-width:150px;" />
+                                </div>
+                                <a href="#">
+                                    <h4>@item.ProductName</h4>
+                                </a>
+                                <h5>@item.UnitPrice TL</h5>
+                            </div>
+                        </div>
+                    }
+                    @*<div class="row">
+                            @foreach (TarziniYarat.Model.Product item in Model)
+                            {
+                                <div class="col col1">
+                                    <div class="f_p_item">
+                                        <div class="f_p_img">
+                                            @{
+                                                var base65 = Convert.ToBase64String(item.Photo);
+                                                var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                            }
+                                            <img class="img-fluid" src="@img2" style="max-height:330px;max-width:250px;" />
+                                        </div>
+                                        <a href="#">
+                                            <h4>@item.ProductName</h4>
+                                        </a>
+                                        <h5>@item.UnitPrice TL</h5>
+                                    </div>
+                                </div>
+                                <div class="col col2">
+                                    <div class="f_p_item">
+                                        <div class="f_p_img">
+                                            @{
+                                                var base6 = Convert.ToBase64String(item.Photo);
+                                                var img = string.Format("data:image/gif;base64,{0}", base6);
+                                            }
+                                            <img class="img-fluid" src="@img" style="max-height:330px;max-width:250px;" />
+                                            <div class="p_icon">
+                                            </div>
+                                        </div>
+                                        <a href="#">
+                                            <h4>@item.ProductName</h4>
+                                        </a>
+                                        <h5>@item.UnitPrice TL</h5>
+                                    </div>
+                                </div>
+                                <div class="col col-3">
+                                    <div class="f_p_item">
+                                        <div class="f_p_img">
+                                            @{
+                                                var bases = Convert.ToBase64String(item.Photo);
+                                                var imge = string.Format("data:image/gif;base64,{0}", bases);
+                                            }
+                                            <img class="img-fluid" src="@imge" style="max-height:330px;max-width:400px;" />
+                                        </div>
+                                        <a href="#">
+                                            <h4>@item.ProductName</h4>
+                                        </a>
+                                        <h5>@item.UnitPrice TL</h5>
+                                    </div>
+                                </div>
+                            }
+                        </div>*@
+
+                    @*<div class="container">
+                            <div class="row">
+                                <div class="col-4">
+                                    @foreach (TarziniYarat.Model.Product item in Model)
+                                    {
+                                        <li>
+                                            @{
+                                                var base65 = Convert.ToBase64String(item.Photo);
+                                                var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                            }
+                                            <img class="img-fluid" src="@img2" style="max-height:350px;max-width:300px;" />
+                                            <a href="#">
+                                                <h4>@item.ProductName</h4>
+                                            </a>
+                                            <h5>@item.UnitPrice TL</h5>
+                                        </li>
+
+                                    }
+                                </div>
+                                <div class="col-4">
+                                    @foreach (TarziniYarat.Model.Product item in Model)
+                                    {
+                                        <li>
+                                            @{
+                                                var base65 = Convert.ToBase64String(item.Photo);
+                                                var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                            }
+                                            <img class="img-fluid" src="@img2" style="max-height:350px;max-width:300px;" />
+                                            <a href="#">
+                                                <h4>@item.ProductName</h4>
+                                            </a>
+                                            <h5>@item.UnitPrice TL</h5>
+                                        </li>
+                                    }
+                                </div>
+                                <div class="col-4">
+                                    @foreach (TarziniYarat.Model.Product item in Model)
+                                    {
+                                        <li>
+                                            @{
+                                                var base65 = Convert.ToBase64String(item.Photo);
+                                                var img2 = string.Format("data:image/gif;base64,{0}", base65);
+                                            }
+                                            <img class="img-fluid" src="@img2" style="max-height:350px;max-width:300px;" />
+                                            <a href="#">
+                                                <h4>@item.ProductName</h4>
+                                            </a>
+                                            <h5>@item.UnitPrice TL</h5>
+                                        </li>
+                                    }
+                                </div>
+                            </div>
+                        </div>*@
+                    @*</ul>*@
+                </div>
+            </div>
+
             @* Gelecek kodlar *@
             <div class="row">
                 <nav class="cat_page mx-auto" aria-label="Page navigation example">

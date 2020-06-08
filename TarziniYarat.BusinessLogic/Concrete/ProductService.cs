@@ -34,6 +34,11 @@ namespace TarziniYarat.BusinessLogic.Concrete
             return _productDAL.GetAll().ToList();
         }
 
+        public List<Product> GetAllByCategory(int categoryID)
+        {
+            return _productDAL.GetAll(a => a.CategoryID == categoryID).ToList();
+        }
+
         public List<Product> GetAllByShipper(int? shipperID)
         {
             return _productDAL.GetAll(a => a.ShipperID == shipperID).ToList();

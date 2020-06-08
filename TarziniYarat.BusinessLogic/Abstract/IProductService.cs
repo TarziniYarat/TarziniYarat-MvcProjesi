@@ -10,5 +10,7 @@ namespace TarziniYarat.BusinessLogic.Abstract
     public interface IProductService:IBaseService<Product>
     {
         List<Product> GetAllByShipper(int? shipperID);
+        List<Product> GetAllByCategory(int categoryID);
+
     }
 }

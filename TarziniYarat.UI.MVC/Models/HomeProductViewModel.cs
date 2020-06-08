@@ -9,7 +9,7 @@ namespace TarziniYarat.UI.MVC.Models
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
         public byte[] Photo { get; set; }
     }
 }

@@ -19,32 +19,14 @@ namespace TarziniYarat.UI.MVC.Controllers
         IPersonService _personService;
         IRoleService _roleService;
         IProductService _productService;
-        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService)
+        ICategoryService _categoryService;
+        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService, ICategoryService categoryService)
         {
             _personService = personService;
             _roleService = roleService;
             _productService = productService;
+            _categoryService = categoryService;
         }
-        //public ActionResult HomePage()
-        //{
-        //    List<Product> models = new List<Product>();
-        //    foreach (Product item in _productService.GetAll())
-        //    {
-
-        //        models.Add(new Product()
-        //        {
-        //            Photo = item.Photo,
-        //            UnitPrice = item.UnitPrice,
-        //            ProductName = item.ProductName,
-        //            PhotoPath=item.PhotoPath
-
-        //        });
-        //    }
-
-
-        //    ViewBag.Product = models;
-        //    return View(models);
-        //}
 
         public ActionResult HomePage()
         {
@@ -67,8 +49,20 @@ namespace TarziniYarat.UI.MVC.Controllers
         }
         public ActionResult Shop()
         {
-            return View();
-        }
+            List<HomeProductViewModel> models = new List<HomeProductViewModel>();
+            foreach (Product item in _productService.GetAll())
+            {
+                models.Add(new HomeProductViewModel()
+                {
+                    Photo = item.Photo,
+                    UnitPrice = item.UnitPrice,
+                    ProductName = item.ProductName
+                });
+            }
+            List<Category> category = _categoryService.GetAll();
+            ViewBag.Category = category;
+            return View(models);
+        } 
         public ActionResult ProductDetail()
         {
             return View();
