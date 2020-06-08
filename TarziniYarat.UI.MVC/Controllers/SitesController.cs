@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
@@ -10,19 +12,58 @@ using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Controllers
 {
+    
     public class SitesController : Controller
     {
+        
         IPersonService _personService;
         IRoleService _roleService;
-
-        public SitesController(IPersonService personService, IRoleService roleService)
+        IProductService _productService;
+        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService)
         {
             _personService = personService;
             _roleService = roleService;
+            _productService = productService;
         }
+        //public ActionResult HomePage()
+        //{
+        //    List<Product> models = new List<Product>();
+        //    foreach (Product item in _productService.GetAll())
+        //    {
+
+        //        models.Add(new Product()
+        //        {
+        //            Photo = item.Photo,
+        //            UnitPrice = item.UnitPrice,
+        //            ProductName = item.ProductName,
+        //            PhotoPath=item.PhotoPath
+
+        //        });
+        //    }
+
+
+        //    ViewBag.Product = models;
+        //    return View(models);
+        //}
+
         public ActionResult HomePage()
         {
-            return View();
+            return View(_productService.GetAll());
+        }
+        public ActionResult Home(int? personID, Product model)
+        {
+            List<Product> models = new List<Product>();
+            foreach (Product item in _productService.GetAll())
+            {
+                models.Add(new Product()
+                {
+                    Photo = item.Photo,
+                    UnitPrice = item.UnitPrice,
+                    ProductName = item.ProductName
+                });
+            }
+            ViewBag.Product = models;
+            return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
         public ActionResult Shop()
         {
@@ -74,11 +115,11 @@ namespace TarziniYarat.UI.MVC.Controllers
                     }
                     else if (item.RoleID==2 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
+                        return RedirectToAction("HomePage", "Sites", new { id = item.PersonID });
                     }
                     else if (item.RoleID==3 && item.IsActive==true)
                     {
-                        return RedirectToAction("HomePage", "Sites", new { controller="Sites", id = item.PersonID });
+                        return RedirectToAction("Home", "Sites", new  { Username = item.Username, PersonID = item.PersonID });
                     }
                 }
                 else
