@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TarziniYarat.Core.Model;
+using System.Web;
 
 namespace TarziniYarat.Model
 {
@@ -26,6 +29,8 @@ namespace TarziniYarat.Model
         public string ProductTitle { get; set; }
         public Size BodySize { get; set; }
         public Color Color { get; set; }
+
+
 
         //Navigation prop
         public Category Category { get; set; }

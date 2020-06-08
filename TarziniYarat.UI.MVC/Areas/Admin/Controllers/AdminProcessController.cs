@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TarziniYarat.BusinessLogic.Abstract;
 using TarziniYarat.Model;
 using TarziniYarat.UI.MVC.Filtres;
+using TarziniYarat.UI.MVC.Models;
 
 namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 {
-   
+
     public class AdminProcessController : Controller
     {
         IProductService _productService;
@@ -33,10 +35,6 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(_productService.GetAll());
         }
 
-        public JsonResult DeleteProduct()
-        {
-            return Json(JsonRequestBehavior.AllowGet);
-        }
 
         public ActionResult CreateProduct()
         {
@@ -66,15 +64,14 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
 
                 ViewBag.IsSuccess = false;
             }
-            
-          
+
+
             GetAllCategoriesToDLL();
             GetAllBrandsToDLL();
             GetBodyFromEnumToDLL();
             GetColorFromEnumToDLL();
             return View(model);
         }
-
 
         public ActionResult UpdateProduct(int id)
         {
@@ -158,7 +155,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return Json("ok", JsonRequestBehavior.AllowGet);
         }
 
-     
+
 
         public JsonResult UpdateStok(Product p)
         {
@@ -166,7 +163,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             product.UnitsInStock = p.UnitsInStock;
             _productService.Update(product);
             return Json("ok", JsonRequestBehavior.AllowGet);
-           
+
         }
         [HttpPost]
         public JsonResult GetProduct(int id)
@@ -188,12 +185,12 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             return View(personList);
         }
 
-       
+
 
         public JsonResult ActivatePerson(int personID)
         {
             Person person = _personService.GetByID(personID);
-            if (person.IsActive==true)
+            if (person.IsActive == true)
             {
                 person.IsActive = false;
                 _personService.Update(person);
@@ -213,7 +210,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             {
                 person.RoleID = 2;
             }
-            else 
+            else
             {
                 person.RoleID = 2;
             }
@@ -228,7 +225,7 @@ namespace TarziniYarat.UI.MVC.Areas.Admin.Controllers
             {
                 person.RoleID = 3;
             }
-            else 
+            else
             {
                 person.RoleID = 3;
             }
