@@ -11,6 +11,8 @@ namespace TarziniYarat.BusinessLogic.Abstract
     {
         List<Product> GetAllByShipper(int? shipperID);
         List<Product> GetAllByCategory(int categoryID);
+        List<Product> GetAllByCategoryName(string categoyName);
+
 
     }
 }

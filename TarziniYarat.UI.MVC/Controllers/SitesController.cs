@@ -47,26 +47,29 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Product = models;
             return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
-        public ActionResult Shop()
-        {
-            List<HomeProductViewModel> models = new List<HomeProductViewModel>();
-            foreach (Product item in _productService.GetAll())
-            {
-                models.Add(new HomeProductViewModel()
-                {
-                    Photo = item.Photo,
-                    UnitPrice = item.UnitPrice,
-                    ProductName = item.ProductName
-                });
-            }
-            List<Category> category = _categoryService.GetAll();
-            ViewBag.Category = category;
-            return View(models);
-        } 
+        //public ActionResult Shop()
+        //{
+        //    List<HomeProductViewModel> models = new List<HomeProductViewModel>();
+        //    foreach (Product item in _productService.GetAll())
+        //    {
+        //        models.Add(new HomeProductViewModel()
+        //        {
+        //            Photo = item.Photo,
+        //            UnitPrice = item.UnitPrice,
+        //            ProductName = item.ProductName
+        //        });
+        //    }
+        //    List<Category> category = _categoryService.GetAll();
+        //    ViewBag.Category = category;
+        //    return View(models);
+        //} 
 
-        [HttpPost]
-        public ActionResult Shop(int catID)
+        public ActionResult Shop(int catID=0)
         {
+            if (catID==)
+            {
+
+            }
             List<HomeProductViewModel> models = new List<HomeProductViewModel>();
             foreach (Product item in _productService.GetAllByCategory(catID))
             {
@@ -77,6 +80,7 @@ namespace TarziniYarat.UI.MVC.Controllers
                     ProductName = item.ProductName
                 });
             }
+
             return View(models);
 
 
@@ -106,6 +110,10 @@ namespace TarziniYarat.UI.MVC.Controllers
             return View();
         }
         public ActionResult BlogDetail()
+        {
+            return View();
+        }
+        public ActionResult ModelistBlog()
         {
             return View();
         }
