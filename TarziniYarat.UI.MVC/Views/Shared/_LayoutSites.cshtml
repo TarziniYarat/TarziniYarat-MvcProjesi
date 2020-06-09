@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -39,7 +40,8 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/Sites/Login">
+                            @*@Html.ActionLink("Hesabım","Profil",new { id=Model.PersonID})*@
+                            <a href="/Sites/Profil">
                                 Hesabım
                             </a>
                         </li>
@@ -295,6 +297,7 @@
     <script src="~/Assets/js/jquery.counterup.js"></script>
     <script src="~/Assets/js/mail-script.js"></script>
     <script src="~/Assets/js/theme.js"></script>
+    @RenderSection("scripts",false)
 </body>
 
 </html>
