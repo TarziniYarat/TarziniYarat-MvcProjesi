@@ -47,44 +47,34 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Product = models;
             return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
-        //public ActionResult Shop()
-        //{
-        //    List<HomeProductViewModel> models = new List<HomeProductViewModel>();
-        //    foreach (Product item in _productService.GetAll())
-        //    {
-        //        models.Add(new HomeProductViewModel()
-        //        {
-        //            Photo = item.Photo,
-        //            UnitPrice = item.UnitPrice,
-        //            ProductName = item.ProductName
-        //        });
-        //    }
-        //    List<Category> category = _categoryService.GetAll();
-        //    ViewBag.Category = category;
-        //    return View(models);
-        //} 
-
+       
         public ActionResult Shop(int catID=0)
         {
-            if (catID==)
+            List<Category> category = _categoryService.GetAll();
+            Bodysize();
+            ViewBag.Category = category;
+            if (catID==0)
             {
+                return View(_productService.GetAll());
+            }
+            else
+            {
+                return View(_productService.GetAllByCategory(catID));
 
             }
-            List<HomeProductViewModel> models = new List<HomeProductViewModel>();
-            foreach (Product item in _productService.GetAllByCategory(catID))
-            {
-                models.Add(new HomeProductViewModel()
-                {
-                    Photo = item.Photo,
-                    UnitPrice = item.UnitPrice,
-                    ProductName = item.ProductName
-                });
-            }
-
-            return View(models);
-
-
         }
+
+        private void Bodysize()
+        {
+            List<SelectListItem> bodySize = new List<SelectListItem>();
+            foreach (Product item in _productService.GetAll())
+            {
+                bodySize.Add(new SelectListItem() { Text = item.BodySize.ToString(), Value = item.ProductID.ToString() });
+            }
+
+            ViewBag.BodySize = bodySize;
+        }
+
         public ActionResult ProductDetail()
         {
             return View();
