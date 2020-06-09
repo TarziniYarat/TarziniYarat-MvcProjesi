@@ -42,23 +42,23 @@ namespace TarziniYarat.Model
 
     public enum Color
     {
-        Kırmızı,
-        Sarı,
-        Siyah,
-        Kahverengi,
-        Mavi,
-        Mor,
-        Yeşil,
-        Turuncu
+        Kırmızı=1,
+        Sarı=2,
+        Siyah=3,
+        Kahverengi=4,
+        Mavi=5,
+        Mor=6,
+        Yeşil=7,
+        Turuncu=8
     }
 
     public enum Size
     {
-        XS,
-        S,
-        M,
-        L,
-        XL,
-        XXL
+        XS=1,
+        S=2,
+        M=3,
+        L=4,
+        XL=5,
+        XXL=6
     }
 }
