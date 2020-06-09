@@ -60,7 +60,6 @@ namespace TarziniYarat.UI.MVC.Controllers
             ViewBag.Size = sizes;
             ViewBag.Brand = brands;
             ViewBag.Category = category;
-            Bodysize();
             if (catID!=0)
             {
                 return View(_productService.GetAllByCategory(catID));
@@ -76,20 +75,10 @@ namespace TarziniYarat.UI.MVC.Controllers
             return View(_productService.GetAll());
         }
 
-        private void Bodysize()
+        public ActionResult ProductDetail(int id)
         {
-            List<SelectListItem> bodySize = new List<SelectListItem>();
-            foreach (Product item in _productService.GetAll())
-            {
-                bodySize.Add(new SelectListItem() { Text = item.BodySize.ToString(), Value = item.ProductID.ToString() });
-            }
-
-            ViewBag.BodySize = bodySize;
-        }
-
-        public ActionResult ProductDetail()
-        {
-            return View();
+            //ViewBag.Product = _productService.GetByID(id);
+            return View(_productService.GetByID(id));
         }
         public ActionResult Combine()
         {
@@ -115,11 +104,12 @@ namespace TarziniYarat.UI.MVC.Controllers
         {
             return View();
         }
-        public ActionResult ModelistBlog()
+        public ActionResult Login()
         {
             return View();
         }
-        public ActionResult Login()
+
+        public ActionResult Card()
         {
             return View();
         }
