@@ -26,89 +26,87 @@
     <!--================Category Product Area =================-->
     <section class="cat_product_area section_gap">
         <div class="container-fluid">
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-4"  >
-                        <div class="left_sidebar_area">
-                            <aside class="left_widgets cat_widgets">
-                                <div class="l_w_title">
-                                    <h3>KATEGORİLER</h3>
-                                </div>
-                                <div class="widgets_inner" style="overflow:initial">
-                                    <table class="table table-hover">
-                                        @foreach (TarziniYarat.Model.Category item in ViewBag.Category)
-                                        {
-                                            <tr>
-                                                <td>
-                                                    @Html.ActionLink(item.CategoryName, "Shop", new { catID = item.CategoryID })
-                                                </td>
-                                            </tr>
-                                        }
-                                    </table>
-                                </div>
-                            </aside>
-                        </div>
-                    </div>
-                    <div class="col-4" >
-                        <aside class="left_widgets p_filter_widgets">
-                            <div class="l_w_title" >
-                                <h3>BEDEN</h3>
+            <div class="row">
+                <div class="col-3">
+                    <div class="left_sidebar_area">
+                        <aside class="left_widgets cat_widgets">
+                            <div class="l_w_title">
+                                <h3>KATEGORİLER</h3>
                             </div>
-                            <div class="widgets_inner" style="overflow:auto">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        @foreach (TarziniYarat.Model.Product item in Model)
-                                        {
-                                        <td> @Html.ActionLink(item.BodySize.ToString(), "Shop", new { proID = item.ProductID })</td>
-                                        }
-                                    </tr>
+                            <div class="widgets_inner" style="overflow:initial">
+                                <table class="table table-hover">
+                                    @foreach (TarziniYarat.Model.Category item in ViewBag.Category)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.ActionLink(item.CategoryName, "Shop", new { catID = item.CategoryID })
+                                            </td>
+                                        </tr>
+                                    }
                                 </table>
                             </div>
                         </aside>
                     </div>
-                    <div class="col-4">
-                        <aside class="left_widgets p_filter_widgets">
+                </div>
+                <div class="col-3">
+                    <div class="left_sidebar_area">
+                        <aside class="left_widgets cat_widgets">
                             <div class="l_w_title">
-                                <h3>RENK</h3>
+                                <h3>MARKALAR</h3>
                             </div>
-                            <div class="widgets_inner">
-                                <div class="table-responsive-md" style="overflow:auto">
-                                    <table class="table table-bordered">
+                            <div class="widgets_inner" style="overflow:initial">
+                                <table class="table table-hover">
+                                    @foreach (TarziniYarat.Model.Brand item in ViewBag.Brand)
+                                    {
                                         <tr>
-                                            @foreach (TarziniYarat.Model.Product item in Model)
-                                            {
-                                            <td> @Html.ActionLink(item.Color.ToString(), "Shop", new { proID = item.ProductID })</td>
-                                            }
+                                            <td>
+                                                @Html.ActionLink(item.CompanyName, "Shop", new { brandID = item.BrandID })
+                                            </td>
                                         </tr>
-                                    </table>
-                                </div>
-                                
+                                    }
+                                </table>
                             </div>
                         </aside>
                     </div>
                 </div>
+                <div class="col-3">
+                    <aside class="left_widgets p_filter_widgets">
+                        <div class="l_w_title">
+                            <h3>BEDEN</h3>
+                        </div>
+                        <div class="widgets_inner" style="overflow:auto">
+                            <table class="table table-bordered">
+                                <tr>
+                                    @foreach (TarziniYarat.Model.Size item in ViewBag.Size)
+                                    {
+                                        <td> @Html.ActionLink(item.ToString(), "Shop"@*, new { proID = item.ProductID }*@)</td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    </aside>
+                </div>
+                <div class="col-3">
+                    <aside class="left_widgets p_filter_widgets">
+                        <div class="l_w_title">
+                            <h3>RENK</h3>
+                        </div>
+                        <div class="widgets_inner">
+                            <div class="table-responsive-md" style="overflow:auto">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        @foreach (TarziniYarat.Model.Color item in ViewBag.Color)
+                                        {
+                                            <td> @Html.ActionLink(item.ToString(), "Shop")</td>
+                                        }
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
-        @*<div class="row flex-row-reverse">
-                <div class="col-lg-9">
-                    <div class="product_top_bar">
-                        <div class="left_dorp">
-                            <select class="sorting">
-                                <option value="1">Default sorting</option>
-                                <option value="2">Default sorting 01</option>
-                                <option value="4">Default sorting 02</option>
-                            </select>
-                            <select class="show">
-                                <option value="1">Show 12</option>
-                                <option value="2">Show 14</option>
-                                <option value="4">Show 16</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>*@
-
         <div class="latest_product_inner row">
             @foreach (TarziniYarat.Model.Product item in Model)
             {
@@ -129,10 +127,7 @@
                 </div>
             }
         </div>
-
-        @*</div>
-            </div>*@
-
+        <br />
         <div class="row">
             <nav class="cat_page mx-auto" aria-label="Page navigation example">
                 <ul class="pagination">

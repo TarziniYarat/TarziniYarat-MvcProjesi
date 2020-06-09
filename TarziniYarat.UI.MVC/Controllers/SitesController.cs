@@ -20,12 +20,14 @@ namespace TarziniYarat.UI.MVC.Controllers
         IRoleService _roleService;
         IProductService _productService;
         ICategoryService _categoryService;
-        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService, ICategoryService categoryService)
+        IBrandService _brandService;
+        public SitesController(IPersonService personService, IRoleService roleService, IProductService productService, ICategoryService categoryService, IBrandService brandService)
         {
             _personService = personService;
             _roleService = roleService;
             _productService = productService;
             _categoryService = categoryService;
+            _brandService = brandService;
         }
 
         public ActionResult HomePage()
@@ -48,20 +50,30 @@ namespace TarziniYarat.UI.MVC.Controllers
             return RedirectToAction("HomePage", "Sites", new { id = personID });
         }
        
-        public ActionResult Shop(int catID=0)
+        public ActionResult Shop(int catID=0, int brandID=0)
         {
             List<Category> category = _categoryService.GetAll();
-            Bodysize();
+            List<Brand> brands = _brandService.GetAll();
+            Size[] sizes = (Size[])Enum.GetValues(typeof(Size));
+            Color[] colors = (Color[])Enum.GetValues(typeof(Color));
+            ViewBag.Color = colors;
+            ViewBag.Size = sizes;
+            ViewBag.Brand = brands;
             ViewBag.Category = category;
-            if (catID==0)
-            {
-                return View(_productService.GetAll());
-            }
-            else
+            Bodysize();
+            if (catID!=0)
             {
                 return View(_productService.GetAllByCategory(catID));
-
             }
+            else if (brandID!=0)
+            {
+                return View(_productService.GetAllByBrandId(brandID));
+            }
+            else if (brandID!=0 && catID!=0)
+            {
+                return View(_productService.GetAllCatIdBrandId(catID, brandID));
+            }
+            return View(_productService.GetAll());
         }
 
         private void Bodysize()
